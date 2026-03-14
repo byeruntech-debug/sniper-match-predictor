@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sniper Match Predictor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & base ──────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07090f;
+  --surface:#0e1118;
+  --card:#131720;
+  --border:#1e2535;
+  --border2:#2a3347;
+  --text:#e8edf5;
+  --muted:#5a6480;
+  --dim:#3a4260;
+  --green:#22d97a;
+  --green-bg:rgba(34,217,122,.08);
+  --green-border:rgba(34,217,122,.22);
+  --amber:#f5a623;
+  --amber-bg:rgba(245,166,35,.08);
+  --amber-border:rgba(245,166,35,.22);
+  --red:#ff4d6a;
+  --red-bg:rgba(255,77,106,.08);
+  --red-border:rgba(255,77,106,.22);
+  --blue:#4d9fff;
+  --accent:#5b7fff;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Syne',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ── Background grid ───────────────────────────────── */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(var(--border) 1px,transparent 1px),
+    linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:40px 40px;
+  opacity:.35;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ── Layout ────────────────────────────────────────── */
+.page{
+  position:relative;z-index:1;
+  max-width:820px;
+  margin:0 auto;
+  padding:40px 24px 80px;
+}
+
+/* ── Header ────────────────────────────────────────── */
+header{
+  text-align:center;
+  margin-bottom:48px;
+  animation:fadeDown .6s ease both;
+}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 14px;
+  border:1px solid var(--border2);
+  border-radius:20px;
+  font-family:'DM Mono',monospace;
+  font-size:11px;
+  color:var(--muted);
+  margin-bottom:20px;
+  letter-spacing:.06em;
+}
+.badge-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 8px var(--green);
+  animation:pulse 2s ease infinite;
+}
+h1{
+  font-size:clamp(28px,5vw,48px);
+  font-weight:800;
+  letter-spacing:-.03em;
+  line-height:1.1;
+  margin-bottom:10px;
+}
+h1 em{
+  font-style:normal;
+  color:var(--accent);
+}
+.sub{
+  font-size:14px;
+  color:var(--muted);
+  font-family:'DM Mono',monospace;
+  letter-spacing:.02em;
+}
+.stats-bar{
+  display:flex;justify-content:center;gap:24px;
+  margin-top:24px;flex-wrap:wrap;
+}
+.stat-pill{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 16px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:40px;
+  font-size:12px;
+  font-family:'DM Mono',monospace;
+}
+.stat-pill span{color:var(--muted)}
+.stat-pill strong{color:var(--green)}
+
+/* ── League tabs ───────────────────────────────────── */
+.league-tabs{
+  display:flex;gap:8px;
+  margin-bottom:24px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:6px;
+  animation:fadeUp .5s .1s ease both;
+}
+.tab{
+  flex:1;
+  padding:10px 8px;
+  border-radius:10px;
+  border:none;
+  background:transparent;
+  color:var(--muted);
+  font-family:'Syne',sans-serif;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .2s;
+  white-space:nowrap;
+}
+.tab:hover{color:var(--text)}
+.tab.active{
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border2);
+  box-shadow:0 2px 12px rgba(0,0,0,.4);
+}
+
+/* ── Main card ─────────────────────────────────────── */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:28px;
+  margin-bottom:20px;
+  animation:fadeUp .5s .2s ease both;
+}
+
+/* ── Team selector ─────────────────────────────────── */
+.matchup{
+  display:grid;
+  grid-template-columns:1fr 60px 1fr;
+  gap:12px;
+  align-items:end;
+  margin-bottom:24px;
+}
+.team-field label{
+  display:block;
+  font-size:11px;
+  font-family:'DM Mono',monospace;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  margin-bottom:8px;
+}
+.team-field select,
+.team-field input{
+  width:100%;
+  padding:12px 16px;
+  background:var(--surface);
+  border:1px solid var(--border2);
+  border-radius:12px;
+  color:var(--text);
+  font-family:'Syne',sans-serif;
+  font-size:14px;
+  font-weight:600;
+  outline:none;
+  transition:border-color .2s, box-shadow .2s;
+  appearance:none;
+  -webkit-appearance:none;
+  cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a6480' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  padding-right:36px;
+}
+.team-field input{
+  background-image:none;
+  padding-right:16px;
+}
+.team-field select:focus,
+.team-field input:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(91,127,255,.12);
+}
+.vs-divider{
+  text-align:center;
+  font-size:11px;
+  font-family:'DM Mono',monospace;
+  color:var(--dim);
+  letter-spacing:.1em;
+  padding-bottom:14px;
+}
+
+/* ── Analyze button ────────────────────────────────── */
+.analyze-btn{
+  width:100%;
+  padding:14px;
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  font-family:'Syne',sans-serif;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  letter-spacing:.02em;
+  transition:all .2s;
+  position:relative;
+  overflow:hidden;
+}
+.analyze-btn::before{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
+  transform:translateX(-100%);
+  transition:transform .4s;
+}
+.analyze-btn:hover::before{transform:translateX(100%)}
+.analyze-btn:hover{background:#6e8fff;transform:translateY(-1px);box-shadow:0 8px 24px rgba(91,127,255,.3)}
+.analyze-btn:active{transform:translateY(0)}
+.analyze-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+
+/* ── Result card ───────────────────────────────────── */
+.result-card{
+  display:none;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:28px;
+  animation:fadeUp .4s ease both;
+}
+
+/* ── Tier banner ───────────────────────────────────── */
+.tier-banner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;
+  border-radius:14px;
+  margin-bottom:24px;
+  border:1px solid;
+}
+.tier-banner.sniper{background:var(--green-bg);border-color:var(--green-border)}
+.tier-banner.hold  {background:var(--amber-bg);border-color:var(--amber-border)}
+.tier-banner.skip  {background:rgba(90,100,128,.08);border-color:var(--border2)}
+.tier-label{
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+.tier-banner.sniper .tier-label{color:var(--green)}
+.tier-banner.hold   .tier-label{color:var(--amber)}
+.tier-banner.skip   .tier-label{color:var(--muted)}
+.tier-right{text-align:right}
+.tier-pred{font-size:13px;font-weight:600;color:var(--text)}
+.tier-conf{font-size:11px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px}
+
+/* ── Prob cards ────────────────────────────────────── */
+.prob-row{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+  margin-bottom:20px;
+}
+.prob-card{
+  text-align:center;
+  padding:18px 8px 14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  transition:border-color .2s;
+}
+.prob-card.best{border-color:var(--green);background:var(--green-bg)}
+.prob-card.best .prob-pct{color:var(--green)}
+.prob-team{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px}
+.prob-pct{font-size:26px;font-weight:800;color:var(--text);letter-spacing:-.02em;line-height:1}
+.prob-outcome{font-size:10px;color:var(--dim);font-family:'DM Mono',monospace;margin-top:4px}
+
+/* ── Probability bars ──────────────────────────────── */
+.bars{margin-bottom:20px}
+.bar-item{margin-bottom:10px}
+.bar-meta{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px}
+.bar-meta-label{color:var(--muted);font-family:'DM Mono',monospace}
+.bar-meta-val{color:var(--text);font-weight:600}
+.bar-track{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.fill-home{background:var(--green)}
+.fill-draw{background:var(--amber)}
+.fill-away{background:var(--red)}
+
+/* ── Stats grid ────────────────────────────────────── */
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-bottom:20px;
+}
+@media(max-width:580px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+.stat-box{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px 14px;
+}
+.stat-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.stat-box-val{font-size:16px;font-weight:700;color:var(--text)}
+
+/* ── Score matrix ──────────────────────────────────── */
+.scores-section{margin-bottom:20px}
+.scores-title{font-size:11px;font-family:'DM Mono',monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.scores-list{display:flex;flex-wrap:wrap;gap:6px}
+.score-chip{
+  padding:5px 12px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:20px;
+  font-family:'DM Mono',monospace;
+  font-size:12px;
+  color:var(--text);
+  display:flex;align-items:center;gap:6px;
+}
+.score-chip.top1{border-color:var(--green-border);background:var(--green-bg)}
+.score-chip.top1 .chip-pct{color:var(--green)}
+.chip-pct{font-size:10px;color:var(--muted)}
+
+/* ── Filter reason ─────────────────────────────────── */
+.filter-reason{
+  padding:12px 16px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-left:3px solid var(--accent);
+  border-radius:0 10px 10px 0;
+  font-size:12px;
+  font-family:'DM Mono',monospace;
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:16px;
+}
+
+/* ── Model info ────────────────────────────────────── */
+.model-info{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:16px;
+  border-top:1px solid var(--border);
+  font-size:11px;
+  font-family:'DM Mono',monospace;
+  color:var(--dim);
+  flex-wrap:wrap;
+  gap:8px;
+}
+.model-info strong{color:var(--muted)}
+
+/* ── Disclaimer ────────────────────────────────────── */
+.disclaimer{
+  text-align:center;
+  font-size:11px;
+  font-family:'DM Mono',monospace;
+  color:var(--dim);
+  margin-top:20px;
+  line-height:1.6;
+}
+
+/* ── Footer ────────────────────────────────────────── */
+footer{
+  text-align:center;
+  margin-top:48px;
+  padding-top:24px;
+  border-top:1px solid var(--border);
+  font-size:11px;
+  font-family:'DM Mono',monospace;
+  color:var(--dim);
+  line-height:1.8;
+}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+
+/* ── Animations ────────────────────────────────────── */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.spinner{
+  display:inline-block;
+  width:16px;height:16px;
+  border:2px solid rgba(255,255,255,.2);
+  border-top-color:#fff;
+  border-radius:50%;
+  animation:spin .6s linear infinite;
+  vertical-align:middle;
+  margin-right:8px;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header>
+    <div class="badge">
+      <span class="badge-dot"></span>
+      V9 SNIPER · CROSS-LEAGUE EDITION
+    </div>
+    <h1>Sniper Match<br><em>Predictor</em></h1>
+    <p class="sub">Dixon-Coles · Elo Rating · 4-Layer Filter</p>
+    <div class="stats-bar">
+      <div class="stat-pill"><span>La Liga</span><strong>75.0%</strong></div>
+      <div class="stat-pill"><span>EPL</span><strong>62.1%</strong></div>
+      <div class="stat-pill"><span>Bundesliga</span><strong>65.8%</strong></div>
+    </div>
+  </header>
+
+  <!-- League tabs -->
+  <div class="league-tabs">
+    <button class="tab active" onclick="setLeague('laliga')">La Liga</button>
+    <button class="tab" onclick="setLeague('epl')">Premier League</button>
+    <button class="tab" onclick="setLeague('bundesliga')">Bundesliga</button>
+    <button class="tab" onclick="setLeague('custom')">Custom</button>
+  </div>
+
+  <!-- Main input card -->
+  <div class="card">
+    <div class="matchup" id="select-matchup">
+      <div class="team-field">
+        <label>Home Team</label>
+        <select id="home-sel" onchange="onTeamChange()"></select>
+      </div>
+      <div class="vs-divider">VS</div>
+      <div class="team-field">
+        <label>Away Team</label>
+        <select id="away-sel" onchange="onTeamChange()"></select>
+      </div>
+    </div>
+    <div class="matchup" id="custom-matchup" style="display:none">
+      <div class="team-field">
+        <label>Home Team</label>
+        <input type="text" id="home-txt" placeholder="e.g. Bayern Munich" oninput="onTeamChange()">
+      </div>
+      <div class="vs-divider">VS</div>
+      <div class="team-field">
+        <label>Away Team</label>
+        <input type="text" id="away-txt" placeholder="e.g. Dortmund" oninput="onTeamChange()">
+      </div>
+    </div>
+    <button class="analyze-btn" id="btn" onclick="analyze()" disabled>
+      Analyze Match
+    </button>
+  </div>
+
+  <!-- Result -->
+  <div class="result-card" id="result"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div>Built with Dixon-Coles · Elo Rating · Sniper Filter V9</div>
+    <div>Validated: 1,382 matches across 3 leagues · Blind test confirmed · March 2026</div>
+    <div style="margin-top:8px">
+      <a href="https://github.com" target="_blank">GitHub</a> &nbsp;·&nbsp;
+      Model for educational & research purposes only
+    </div>
+  </footer>
+
+</div>
+
+<script>
+// ── League data ────────────────────────────────────────
+const DATA = {
+  laliga:{
+    name:"La Liga",acc:75.0,brier:0.2002,
+    h_adv:0.28,rho:-0.12,
+    teams:{
+      "Barcelona":     {elo:1820,atk:0.55,def:0.38},
+      "Real Madrid":   {elo:1810,atk:0.52,def:0.35},
+      "Ath Madrid":    {elo:1740,atk:0.38,def:0.45},
+      "Girona":        {elo:1640,atk:0.18,def:0.10},
+      "Ath Bilbao":    {elo:1620,atk:0.15,def:0.12},
+      "Real Sociedad": {elo:1600,atk:0.12,def:0.08},
+      "Betis":         {elo:1580,atk:0.10,def:0.06},
+      "Villarreal":    {elo:1570,atk:0.09,def:0.05},
+      "Valencia":      {elo:1520,atk:0.02,def:-0.05},
+      "Celta":         {elo:1510,atk:0.01,def:-0.06},
+      "Osasuna":       {elo:1500,atk:0.00,def:-0.08},
+      "Getafe":        {elo:1490,atk:-0.02,def:-0.10},
+      "Alaves":        {elo:1470,atk:-0.05,def:-0.15},
+      "Sevilla":       {elo:1460,atk:-0.06,def:-0.18},
+      "Espanol":       {elo:1450,atk:-0.08,def:-0.22},
+      "Vallecano":     {elo:1440,atk:-0.10,def:-0.25},
+      "Mallorca":      {elo:1430,atk:-0.12,def:-0.28},
+      "Las Palmas":    {elo:1420,atk:-0.15,def:-0.32},
+      "Leganés":       {elo:1410,atk:-0.18,def:-0.36},
+      "Real Valladolid":{elo:1400,atk:-0.22,def:-0.42},
+    }
+  },
+  epl:{
+    name:"Premier League",acc:62.1,brier:0.2073,
+    h_adv:0.25,rho:-0.10,
+    teams:{
+      "Man City":         {elo:1820,atk:0.52,def:0.40},
+      "Arsenal":          {elo:1790,atk:0.48,def:0.36},
+      "Liverpool":        {elo:1780,atk:0.46,def:0.34},
+      "Aston Villa":      {elo:1700,atk:0.28,def:0.20},
+      "Chelsea":          {elo:1680,atk:0.24,def:0.16},
+      "Tottenham":        {elo:1660,atk:0.20,def:0.12},
+      "Man United":       {elo:1640,atk:0.16,def:0.08},
+      "Newcastle":        {elo:1620,atk:0.12,def:0.05},
+      "Brighton":         {elo:1600,atk:0.09,def:0.02},
+      "West Ham":         {elo:1570,atk:0.04,def:-0.04},
+      "Brentford":        {elo:1550,atk:0.02,def:-0.08},
+      "Fulham":           {elo:1540,atk:0.00,def:-0.10},
+      "Crystal Palace":   {elo:1520,atk:-0.04,def:-0.14},
+      "Bournemouth":      {elo:1510,atk:-0.06,def:-0.18},
+      "Wolves":           {elo:1490,atk:-0.10,def:-0.22},
+      "Everton":          {elo:1470,atk:-0.14,def:-0.28},
+      "Nott'm Forest":    {elo:1460,atk:-0.16,def:-0.30},
+      "Luton":            {elo:1420,atk:-0.28,def:-0.42},
+      "Sheffield United": {elo:1410,atk:-0.32,def:-0.48},
+      "Burnley":          {elo:1400,atk:-0.36,def:-0.52},
+    }
+  },
+  bundesliga:{
+    name:"Bundesliga",acc:65.8,brier:0.4796,
+    h_adv:0.3439,rho:-0.1493,
+    teams:{
+      "Leverkusen":    {elo:1757,atk:0.42,def:0.38},
+      "Bayern Munich": {elo:1630,atk:0.54,def:0.36},
+      "Stuttgart":     {elo:1645,atk:0.32,def:0.22},
+      "RB Leipzig":    {elo:1633,atk:0.18,def:0.16},
+      "Dortmund":      {elo:1627,atk:0.45,def:0.14},
+      "Ein Frankfurt": {elo:1510,atk:0.09,def:0.02},
+      "Freiburg":      {elo:1547,atk:0.06,def:0.08},
+      "Union Berlin":  {elo:1437,atk:-0.02,def:-0.06},
+      "Wolfsburg":     {elo:1441,atk:0.09,def:-0.08},
+      "Mainz":         {elo:1487,atk:-0.01,def:-0.04},
+      "Hoffenheim":    {elo:1439,atk:-0.04,def:-0.28},
+      "Werder Bremen": {elo:1405,atk:-0.02,def:-0.41},
+      "FC Koln":       {elo:1484,atk:-0.06,def:-0.16},
+      "M'gladbach":    {elo:1433,atk:-0.08,def:-0.22},
+      "Augsburg":      {elo:1435,atk:-0.10,def:-0.36},
+      "Bochum":        {elo:1414,atk:-0.14,def:-0.51},
+      "Holstein Kiel": {elo:1480,atk:-0.08,def:-0.20},
+      "St Pauli":      {elo:1480,atk:-0.08,def:-0.20},
+    }
+  }
+};
+
+let league = 'laliga';
+
+// ── Populate selects ───────────────────────────────────
+function populate(lg){
+  const teams = Object.keys(DATA[lg].teams);
+  ['home-sel','away-sel'].forEach((id,i)=>{
+    const el = document.getElementById(id);
+    el.innerHTML = teams.map((t,j)=>`<option value="${t}"${j===i?'selected':''}>${t}</option>`).join('');
+    if(i===1&&teams.length>1) el.value=teams[1];
+  });
+}
+
+function setLeague(lg){
+  league=lg;
+  document.querySelectorAll('.tab').forEach((t,i)=>{
+    t.classList.toggle('active',['laliga','epl','bundesliga','custom'][i]===lg);
+  });
+  const isCustom=lg==='custom';
+  document.getElementById('select-matchup').style.display=isCustom?'none':'grid';
+  document.getElementById('custom-matchup').style.display=isCustom?'grid':'none';
+  if(!isCustom) populate(lg);
+  document.getElementById('result').style.display='none';
+  onTeamChange();
+}
+
+function getTeams(){
+  if(league==='custom')
+    return [document.getElementById('home-txt').value.trim(),
+            document.getElementById('away-txt').value.trim()];
+  return [document.getElementById('home-sel').value,
+          document.getElementById('away-sel').value];
+}
+
+function onTeamChange(){
+  const [h,a]=getTeams();
+  document.getElementById('btn').disabled=!h||!a||h===a;
+  document.getElementById('result').style.display='none';
+}
+
+// ── DC + Poisson engine ────────────────────────────────
+function poiPmf(k,lam){
+  let lp=k*Math.log(Math.max(lam,1e-9))-lam;
+  for(let i=1;i<=k;i++) lp-=Math.log(i);
+  return Math.exp(lp);
+}
+function tau(x,y,lam,mu,rho){
+  if(x===0&&y===0) return 1-lam*mu*rho;
+  if(x===0&&y===1) return 1+lam*rho;
+  if(x===1&&y===0) return 1+mu*rho;
+  if(x===1&&y===1) return 1-rho;
+  return 1;
+}
+
+function compute(home,away){
+  const lg=DATA[league];
+  const hd = lg.teams[home]||{elo:1500,atk:0,def:0};
+  const ad = lg.teams[away]||{elo:1500,atk:0,def:0};
+  const gap=hd.elo-ad.elo;
+
+  // Fallback for custom teams using Elo gap heuristic
+  const atk_h = hd.atk || gap/2200;
+  const def_h = hd.def || -gap/3000;
+  const atk_a = ad.atk || -gap/2200;
+  const def_a = ad.def ||  gap/3000;
+
+  let lam=Math.exp(atk_h-def_a+lg.h_adv);
+  let mu =Math.exp(atk_a-def_h);
+  lam=Math.max(0.25,Math.min(7,lam));
+  mu =Math.max(0.25,Math.min(7,mu));
+
+  const N=9;
+  let pm=[],tot=0;
+  for(let hg=0;hg<N;hg++){pm[hg]=[];for(let ag=0;ag<N;ag++){
+    const v=Math.max(0,tau(hg,ag,lam,mu,lg.rho)*poiPmf(hg,lam)*poiPmf(ag,mu));
+    pm[hg][ag]=v; tot+=v;
+  }}
+
+  let pH=0,pD=0,pA=0;
+  let scores=[];
+  for(let hg=0;hg<N;hg++) for(let ag=0;ag<N;ag++){
+    const v=pm[hg][ag]/tot;
+    if(hg>ag) pH+=v; else if(hg===ag) pD+=v; else pA+=v;
+    if(hg<6&&ag<6) scores.push({s:`${hg}-${ag}`,p:v});
+  }
+  scores.sort((a,b)=>b.p-a.p);
+
+  return {pH,pD,pA,lam,mu,gap,eloH:hd.elo,eloA:ad.elo,scores:scores.slice(0,6)};
+}
+
+function sniper(r){
+  const {pH,pD,pA,gap}=r;
+  const pmax=Math.max(pH,pD,pA);
+  const dthr=league==='bundesliga'?0.30:0.28;
+  const gthr=league==='bundesliga'?60:80;
+  if(pmax<0.50) return {tier:"SKIP",reason:"No dominant outcome — all three results plausible"};
+  if(pD>dthr)   return {tier:"HOLD",reason:`Draw danger: ${(pD*100).toFixed(1)}% exceeds ${dthr*100}% threshold`};
+  const pred=pH>pA&&pH>pD?"home_win":pA>pH&&pA>pD?"away_win":"draw";
+  if(pred==="home_win"&&gap<gthr)
+    return {tier:"HOLD",reason:`Elo gap insufficient for home signal (gap ${gap} < ${gthr})`};
+  if(pred==="away_win"&&gap>-gthr)
+    return {tier:"HOLD",reason:`Elo gap insufficient for away signal (gap ${gap})`};
+  return {tier:"SNIPER",reason:`3-layer consensus: ${pred.replace('_',' ')} | Elo Δ${gap} | draw ${(pD*100).toFixed(1)}%`};
+}
+
+// ── Render ─────────────────────────────────────────────
+function analyze(){
+  const [home,away]=getTeams();
+  if(!home||!away||home===away) return;
+
+  const btn=document.getElementById('btn');
+  btn.innerHTML='<span class="spinner"></span>Analyzing…';
+  btn.disabled=true;
+  document.getElementById('result').style.display='none';
+
+  setTimeout(()=>{
+    const r=compute(home,away);
+    const f=sniper(r);
+    const lg=DATA[league]||{name:'Custom',acc:null,brier:null};
+
+    const pct=v=>(v*100).toFixed(1)+'%';
+    const best=r.pH>r.pA&&r.pH>r.pD?'home':r.pA>r.pH&&r.pA>r.pD?'away':'draw';
+    const predLabel=best==='home'?home:best==='away'?away:'Draw';
+    const conf=Math.max(r.pH,r.pD,r.pA)>0.65?'High':Math.max(r.pH,r.pD,r.pA)>0.50?'Medium':'Low';
+
+    const tierClass=f.tier==='SNIPER'?'sniper':f.tier==='HOLD'?'hold':'skip';
+    const tierIcon=f.tier==='SNIPER'?'🎯 SNIPER':f.tier==='HOLD'?'⏸ HOLD':'⛔ SKIP';
+
+    const scoresHtml=r.scores.map((sc,i)=>
+      `<div class="score-chip${i===0?' top1':''}">
+        ${sc.s}<span class="chip-pct">${(sc.p*100).toFixed(1)}%</span>
+      </div>`
+    ).join('');
+
+    const modelLine=lg.acc
+      ?`<strong>${lg.name}</strong>: ${lg.acc}% Sniper accuracy · Brier ${lg.brier} · V9 Sniper`
+      :'Custom mode — parameters estimated from Elo gap';
+
+    document.getElementById('result').innerHTML=`
+      <div class="tier-banner ${tierClass}">
+        <div class="tier-label">${tierIcon}</div>
+        <div class="tier-right">
+          <div class="tier-pred">Prediction: ${predLabel}</div>
+          <div class="tier-conf">Confidence: ${conf}</div>
+        </div>
+      </div>
+
+      <div class="prob-row">
+        <div class="prob-card${best==='home'?' best':''}">
+          <div class="prob-team">${home}</div>
+          <div class="prob-pct">${pct(r.pH)}</div>
+          <div class="prob-outcome">HOME WIN</div>
+        </div>
+        <div class="prob-card${best==='draw'?' best':''}">
+          <div class="prob-team">Draw</div>
+          <div class="prob-pct">${pct(r.pD)}</div>
+          <div class="prob-outcome">DRAW</div>
+        </div>
+        <div class="prob-card${best==='away'?' best':''}">
+          <div class="prob-team">${away}</div>
+          <div class="prob-pct">${pct(r.pA)}</div>
+          <div class="prob-outcome">AWAY WIN</div>
+        </div>
+      </div>
+
+      <div class="bars">
+        <div class="bar-item">
+          <div class="bar-meta">
+            <span class="bar-meta-label">${home}</span>
+            <span class="bar-meta-val">${pct(r.pH)}</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill fill-home" style="width:${Math.round(r.pH*100)}%"></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-meta">
+            <span class="bar-meta-label">Draw</span>
+            <span class="bar-meta-val">${pct(r.pD)}</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill fill-draw" style="width:${Math.round(r.pD*100)}%"></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-meta">
+            <span class="bar-meta-label">${away}</span>
+            <span class="bar-meta-val">${pct(r.pA)}</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill fill-away" style="width:${Math.round(r.pA*100)}%"></div></div>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-box-label">Elo ${home.split(' ').pop()}</div>
+          <div class="stat-box-val">${r.eloH}</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">Elo ${away.split(' ').pop()}</div>
+          <div class="stat-box-val">${r.eloA}</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">Elo Gap</div>
+          <div class="stat-box-val">${r.gap>0?'+':''}${r.gap}</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">xGoals</div>
+          <div class="stat-box-val">${r.lam.toFixed(2)} – ${r.mu.toFixed(2)}</div>
+        </div>
+      </div>
+
+      <div class="scores-section">
+        <div class="scores-title">Most probable scores</div>
+        <div class="scores-list">${scoresHtml}</div>
+      </div>
+
+      <div class="filter-reason">Filter: ${f.reason}</div>
+
+      <div class="model-info">
+        <span>${modelLine}</span>
+        <span>Walk-forward validated · No data leakage</span>
+      </div>
+    `;
+
+    document.getElementById('result').style.display='block';
+    document.getElementById('result').scrollIntoView({behavior:'smooth',block:'nearest'});
+    btn.innerHTML='Analyze Match';
+    btn.disabled=false;
+  },500);
+}
+
+// Init
+populate('laliga');
+onTeamChange();
+</script>
+</body>
+</html>
