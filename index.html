@@ -100,14 +100,20 @@ const MODEL  = {"meta": {"version": "v10.0", "season": "2025/26", "generated_at"
 const TEAMS  = {"La_Liga": ["Real Madrid", "Barcelona", "Atletico Madrid", "Athletic Club", "Villarreal", "Real Sociedad", "Real Betis", "Sevilla", "Valencia", "Osasuna", "Celta Vigo", "Getafe", "Rayo Vallecano", "Mallorca", "Alaves", "Girona", "Espanyol", "Levante", "Elche", "Real Oviedo"], "EPL": ["Arsenal", "Manchester City", "Liverpool", "Chelsea", "Manchester United", "Tottenham", "Newcastle", "Aston Villa", "Brighton", "West Ham", "Fulham", "Wolves", "Everton", "Brentford", "Crystal Palace", "Nottingham Forest", "Bournemouth", "Leeds United", "Burnley", "Sunderland"], "Bundesliga": ["Bayern Munich", "Bayer Leverkusen", "Borussia Dortmund", "RB Leipzig", "Eintracht Frankfurt", "Stuttgart", "Freiburg", "Hoffenheim", "Werder Bremen", "Augsburg", "Wolfsburg", "Mainz", "Borussia Monchengladbach", "Union Berlin", "St. Pauli", "FC Heidenheim", "Hamburger SV", "FC Koln"]};
 
 function updateTeams() {
-  const lg=document.getElementById('league').value;
-  const ts=TEAMS[lg]||[];
-  ['home','away'].forEach((id,i)=>{
-    const s=document.getElementById(id);
-    s.innerHTML=ts.map((t,j)=>'<option value="'+t+'"'+(j===i?' selected':'')+'>'+t+'</option>').join('');
-  });
-  if(ts.length>1) document.getElementById('away').value=ts[1];
+  const leagueEl = document.getElementById('league');
+  const homeEl = document.getElementById('home');
+  const awayEl = document.getElementById('away');
+  if(!leagueEl || !homeEl || !awayEl) {
+    setTimeout(updateTeams, 100);
+    return;
+  }
+  const lg = leagueEl.value;
+  const ts = TEAMS[lg] || [];
+  homeEl.innerHTML = ts.map((t,j)=>'<option value="'+t+'"'+(j===0?' selected':'')+'>'+t+'</option>').join('');
+  awayEl.innerHTML = ts.map((t,j)=>'<option value="'+t+'"'+(j===1?' selected':'')+'>'+t+'</option>').join('');
 }
+
+window.addEventListener('DOMContentLoaded', updateTeams);
 
 function poisson(k,l){
   const f=[1,1,2,6,24,120,720,5040,40320];
@@ -364,9 +370,6 @@ async function runPredict() {
   btn.disabled=false; btn.textContent='🔮 Analisis Pertandingan';
 }
 
-window.addEventListener('load', function() {
-  updateTeams();
-});
 ```
 </script>
 </body>
