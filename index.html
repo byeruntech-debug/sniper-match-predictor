@@ -3,411 +3,401 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Football Predictor 2025/26 | Sniper v10</title>
+<title>Football Predictor</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {--bg:#0f0f1a;--card:#1a1a2e;--card2:#16213e;--green:#27ae60;--yellow:#f39c12;--red:#e74c3c;--blue:#3498db;--purple:#9b59b6;--text:#e0e0e0;--muted:#888;}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',sans-serif;min-height:100vh;padding:20px;}
-  .container{max-width:820px;margin:0 auto;}
-  h1{text-align:center;font-size:26px;margin-bottom:4px;}
-  .subtitle{text-align:center;color:var(--muted);font-size:13px;margin-bottom:24px;}
-  .form-card{background:var(--card);border-radius:16px;padding:24px;margin-bottom:16px;}
-  .form-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px;}
-  .ctx-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
-  label{font-size:12px;color:var(--muted);display:block;margin-bottom:5px;}
-  select,input,textarea{width:100%;background:var(--card2);border:1px solid #2a2a4a;color:var(--text);padding:10px 12px;border-radius:8px;font-size:14px;}
-  .api-row{margin-bottom:14px;}
-  .api-row input{border-color:#9b59b6;}
-  .api-hint{font-size:11px;color:var(--muted);margin-top:4px;}
-  .btn{width:100%;background:var(--blue);color:white;border:none;padding:14px;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;transition:opacity .2s;}
-  .btn:hover{opacity:.85;} .btn:disabled{opacity:.5;cursor:not-allowed;}
-  #result{display:none;margin-top:16px;}
-  .result-card{background:var(--card);border-radius:16px;padding:24px;}
-  .match-title{text-align:center;font-size:22px;font-weight:700;margin-bottom:8px;}
-  .badge{display:inline-block;padding:6px 18px;border-radius:20px;font-weight:700;font-size:13px;}
-  .probs-section{margin:16px 0;}
-  .section-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
-  .probs{display:flex;gap:10px;}
-  .prob-box{flex:1;border-radius:10px;padding:12px;text-align:center;border-top:3px solid;}
-  .prob-box.base{background:#1a2a1a;} .prob-box.adj{background:#1a1a2e;}
-  .prob-label{font-size:11px;color:var(--muted);margin-bottom:4px;}
-  .prob-val{font-size:20px;font-weight:700;}
-  .prob-delta{font-size:11px;margin-top:3px;}
-  .score-row{display:flex;gap:12px;margin:12px 0;align-items:center;justify-content:center;}
-  .score-big{font-size:38px;font-weight:700;}
-  .score-label{font-size:11px;color:var(--muted);text-align:center;}
-  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0;}
-  .stat-box{background:var(--card2);border-radius:8px;padding:10px;text-align:center;}
-  .stat-label{font-size:11px;color:var(--muted);} .stat-val{font-size:15px;font-weight:600;margin-top:2px;}
-  .report-box{background:var(--card2);border-radius:10px;padding:18px;margin-top:16px;line-height:1.8;font-size:14px;border-left:4px solid var(--purple);white-space:pre-wrap;}
-  .report-box h3{color:var(--purple);margin:12px 0 6px;font-size:15px;}
-  .verdict-box{background:#1a1230;border:1px solid var(--purple);border-radius:10px;padding:14px;margin-top:12px;}
-  .verdict-label{font-size:11px;color:var(--purple);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
-  .verdict-val{font-size:18px;font-weight:700;}
-  .loading{text-align:center;padding:30px;font-size:16px;color:var(--muted);}
-  .footer{text-align:center;color:var(--muted);font-size:11px;margin-top:20px;line-height:1.8;}
-  .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;margin-left:6px;}
-  .tag.stat{background:#1a3a1a;color:var(--green);} .tag.ai{background:#1a1230;color:var(--purple);}
-  @media(max-width:600px){.form-row{grid-template-columns:1fr;}.ctx-row{grid-template-columns:1fr;}.stats-grid{grid-template-columns:1fr 1fr;}.probs{flex-direction:column;}}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0e1a;--card:#111827;--card2:#1a2235;--border:#1e2d45;--text:#e2e8f0;--muted:#64748b;--dim:#334155;--green:#22c55e;--amber:#f59e0b;--red:#ef4444;--blue:#3b82f6;--cyan:#06b6d4}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto;padding:24px 16px 60px}
+.site-header{text-align:center;margin-bottom:28px}
+.site-header h1{font-size:26px;font-weight:700;margin-bottom:4px}
+.site-header p{font-size:12px;color:var(--muted)}
+.ai{color:#a78bfa}
+.input-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.field label{display:block;font-size:11px;color:var(--muted);margin-bottom:6px;font-weight:500}
+.field select,.field input{width:100%;padding:10px 12px;background:var(--card2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Inter',sans-serif;font-size:13px;outline:none}
+.field select{cursor:pointer}
+.field input::placeholder{color:var(--dim)}
+.api-field{margin-bottom:16px}
+.api-field label{display:block;font-size:11px;color:#a78bfa;margin-bottom:6px;font-weight:500}
+.api-field input{width:100%;padding:10px 12px;background:var(--card2);border:1px solid #4c1d95;border-radius:10px;color:var(--text);font-family:'Inter',sans-serif;font-size:13px;outline:none}
+.api-note{font-size:10px;color:var(--muted);margin-top:4px}
+.api-note a{color:var(--cyan)}
+.btn-analyze{width:100%;padding:13px;background:linear-gradient(135deg,#0ea5e9,#2563eb);border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .2s;font-family:'Inter',sans-serif}
+.btn-analyze:hover{opacity:.9}
+.btn-analyze:disabled{opacity:.5;cursor:not-allowed}
+.live-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:20px;font-size:10px;color:var(--green);font-weight:600;margin-bottom:16px}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.result-area{display:none}
+.match-header{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:12px;text-align:center}
+.match-teams{font-size:20px;font-weight:700;margin-bottom:4px}
+.match-teams .vs{color:var(--muted);font-weight:400;margin:0 10px}
+.match-meta{font-size:12px;color:var(--muted)}
+.match-tabs{display:flex;border-bottom:1px solid var(--border);margin-top:16px}
+.mtab{padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;transition:all .15s}
+.mtab.active{color:var(--red);border-bottom-color:var(--red)}
+.pred-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:12px}
+.pred-badge{display:inline-block;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:16px}
+.b-home{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.3)}
+.b-draw{background:rgba(245,158,11,.15);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.b-away{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.3)}
+.b-tier{background:rgba(6,182,212,.15);color:var(--cyan);border:1px solid rgba(6,182,212,.3);margin-left:6px}
+.prob3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
+.prob-box{text-align:center;padding:14px 8px;background:var(--card2);border:1px solid var(--border);border-radius:12px}
+.prob-box.win{border-color:rgba(34,197,94,.4)}
+.prob-box.win .pval{color:var(--green)}
+.prob-box.draw-b .pval{color:var(--amber)}
+.plabel{font-size:11px;color:var(--muted);margin-bottom:4px}
+.pval{font-size:22px;font-weight:700}
+.sec-title{font-size:11px;color:var(--muted);font-weight:600;margin-bottom:12px;letter-spacing:.05em}
+.score-sec{text-align:center;margin-bottom:16px}
+.score-main{font-size:32px;font-weight:800}
+.score-alt{font-size:12px;color:var(--muted);margin-top:2px}
+.stats6{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.sbox{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center}
+.slabel{font-size:10px;color:var(--muted);margin-bottom:2px}
+.sval{font-size:14px;font-weight:600}
+.form-live{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.form-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:12px}
+.form-card-ttl{font-size:10px;color:var(--muted);font-weight:600;margin-bottom:6px}
+.form-card-team{font-size:13px;font-weight:700;margin-bottom:6px}
+.fb-row{display:flex;gap:3px;margin-bottom:6px}
+.fb{width:22px;height:22px;border-radius:3px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;color:#fff}
+.fb.W{background:var(--green)}.fb.D{background:var(--amber)}.fb.L{background:var(--red)}.fb.q{background:var(--dim);color:var(--muted)}
+.fstats{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.fstat{font-size:11px;color:var(--muted)}
+.fstat span{color:var(--text);font-weight:600}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.subtype-row{display:flex;gap:6px;padding:10px 16px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.stab{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);color:var(--muted);background:transparent;transition:all .15s;font-family:'Inter',sans-serif}
+.stab.active{background:var(--red);color:#fff;border-color:var(--red)}
+.tbl-wrap{overflow-x:auto;padding:0 0 8px}
+table.st{width:100%;border-collapse:collapse;font-size:12px}
+table.st th{padding:8px 10px;text-align:left;color:var(--muted);font-weight:600;font-size:10px;letter-spacing:.05em;border-bottom:1px solid var(--border)}
+table.st td{padding:8px 10px;border-bottom:1px solid rgba(30,45,69,.4)}
+table.st tr:last-child td{border-bottom:none}
+table.st tr.hl td{background:rgba(34,197,94,.06)}
+table.st tr.hl2 td{background:rgba(239,68,68,.06)}
+table.st td.num{color:var(--muted);text-align:center}
+table.st th.num{text-align:center}
+table.st td.tn{font-weight:600}
+table.st td.pts{font-weight:700}
+.h2h-wrap{padding:14px 16px}
+.h2h-filter{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.h2hf{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);color:var(--muted);background:transparent;font-family:'Inter',sans-serif}
+.h2hf.active{background:var(--red);color:#fff;border-color:var(--red)}
+.h2h-lbl{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;padding:8px 0 6px;border-bottom:1px solid var(--border);margin-bottom:8px}
+.h2h-row{display:grid;grid-template-columns:70px 1fr 26px 8px 26px 1fr 22px;align-items:center;gap:6px;padding:8px 0;border-bottom:1px solid rgba(30,45,69,.4);font-size:12px}
+.h2h-row:last-child{border-bottom:none}
+.h2h-date{color:var(--muted);font-size:10px;line-height:1.5}
+.h2h-t{font-weight:500}
+.h2h-t.b{font-weight:700}
+.h2h-s{font-weight:700;text-align:center}
+.h2h-sep{text-align:center;color:var(--dim)}
+.rbox{width:20px;height:20px;border-radius:3px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;color:#fff;margin:0 auto}
+.rbox.W{background:var(--green)}.rbox.D{background:var(--amber)}.rbox.L{background:var(--red)}
+.loading-box{padding:24px;text-align:center;color:var(--muted);font-size:13px}
+.spinner{display:inline-block;width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--cyan);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:8px}
+.err-box{padding:12px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:8px;font-size:12px;color:#fca5a5;margin:12px 16px}
+.gemini-report{font-size:13px;line-height:1.7;color:var(--muted)}
+.gemini-report strong{color:var(--text)}
+@media(max-width:600px){.row3{grid-template-columns:1fr 1fr}.stats6{grid-template-columns:repeat(3,1fr)}.form-live{grid-template-columns:1fr}.h2h-row{font-size:11px;grid-template-columns:60px 1fr 22px 6px 22px 1fr 20px}}
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
+<div class="site-header">
   <h1>⚽ Football Predictor</h1>
-  <p class="subtitle">Dixon-Coles · Elo · xG Proxy · <span style="color:#9b59b6">Gemini AI Override</span> — Musim 2025/26</p>
-
-  <div class="form-card">
-    <div class="form-row">
-      <div><label>Liga</label>
-        <select id="league" onchange="updateTeams()">
-          <option value="EPL">Premier League 🏴󠁧󠁢󠁥󠁮󠁧󠁿</option>
-          <option value="La_Liga">La Liga 🇪🇸</option>
-          <option value="Bundesliga">Bundesliga 🇩🇪</option>
-        </select>
-      </div>
-      <div><label>Tim Kandang</label><select id="home"></select></div>
-      <div><label>Tim Tamu</label><select id="away"></select></div>
+  <p>Dixon-Coles · Elo · xG Proxy · <span class="ai">Gemini AI Override</span> — Musim 2025/26</p>
+</div>
+<div class="input-card">
+  <div class="live-badge"><span class="live-dot"></span>LIVE DATA — Sofascore API</div>
+  <div class="row3">
+    <div class="field"><label>Liga</label>
+      <select id="sel-liga" onchange="onLeagueChange()">
+        <option value="EPL">Premier League</option>
+        <option value="LaLiga">La Liga</option>
+        <option value="Bundesliga">Bundesliga</option>
+      </select>
     </div>
-    <div class="ctx-row">
-      <div><label>⚕️ Cedera/Absen <span style="color:#e74c3c">(pengaruhi angka!)</span></label>
-        <input type="text" id="injuries" placeholder="cth: Mbappe absen, Saka 50% fit"></div>
-      <div><label>🔄 H2H Recent</label>
-        <input type="text" id="h2h" placeholder="cth: Home menang 3 dari 5 H2H"></div>
-    </div>
-    <div class="ctx-row">
-      <div><label>🔥 Motivasi</label>
-        <input type="text" id="motivation" placeholder="cth: Derby, posisi papan atas"></div>
-      <div><label>🌤️ Cuaca/Venue</label>
-        <input type="text" id="weather" placeholder="cth: Bernabeu, 22C cerah"></div>
-    </div>
-    <div class="api-row">
-      <label>🔑 Gemini API Key <span style="color:var(--purple)">(untuk AI Override aktif)</span></label>
-      <input type="password" id="apikey" placeholder="Paste Gemini API key kamu di sini...">
-      <div class="api-hint">Gratis di: <a href="https://aistudio.google.com/apikey" target="_blank" style="color:var(--purple)">aistudio.google.com/apikey</a> — key tidak disimpan ke server manapun</div>
-    </div>
-    <button class="btn" id="btn" onclick="runPredict()">🔮 Analisis Pertandingan</button>
+    <div class="field"><label>Tim Kandang</label><select id="sel-home" onchange="onTeamChange()"></select></div>
+    <div class="field"><label>Tim Tamu</label><select id="sel-away" onchange="onTeamChange()"></select></div>
   </div>
-
-  <div id="result"></div>
-  <div class="footer">
-    Model v10.0 · Data FDCO 2023–2026 · AI Override by Gemini 2.0 Flash<br>
-    ⚠️ Hanya untuk tujuan edukasi dan portofolio data science — bukan ajakan berjudi
+  <div class="row2">
+    <div class="field"><label>Cedera/Absen</label><input type="text" id="inp-injury" placeholder="cth: Mbappe absen"></div>
+    <div class="field"><label>H2H Recent</label><input type="text" id="inp-h2h" placeholder="cth: Home menang 3 dari 5"></div>
   </div>
+  <div class="row2">
+    <div class="field"><label>Motivasi</label><input type="text" id="inp-motiv" placeholder="cth: Derby, posisi papan atas"></div>
+    <div class="field"><label>Cuaca/Venue</label><input type="text" id="inp-venue" placeholder="cth: Bernabeu, 22C cerah"></div>
+  </div>
+  <div class="api-field">
+    <label>Gemini API Key (untuk AI Override)</label>
+    <input type="password" id="inp-apikey" placeholder="AIzaSy...">
+    <div class="api-note">Gratis di: <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a></div>
+  </div>
+  <button class="btn-analyze" id="btn-main" onclick="analyze()">Analisis Pertandingan</button>
 </div>
 
+<div class="result-area" id="result-area">
+  <div class="match-header">
+    <div class="match-teams"><span id="r-home"></span><span class="vs">vs</span><span id="r-away"></span></div>
+    <div class="match-meta" id="r-meta"></div>
+    <div class="match-tabs">
+      <div class="mtab active" onclick="swTab('match',this)">MATCH</div>
+      <div class="mtab" onclick="swTab('h2h',this)">H2H</div>
+      <div class="mtab" onclick="swTab('standings',this)">STANDINGS</div>
+    </div>
+  </div>
+  <div class="tab-panel active" id="panel-match">
+    <div class="pred-card">
+      <div id="r-badges"></div>
+      <div class="sec-title">PROBABILITAS STATISTIK (DIXON-COLES + ELO)</div>
+      <div class="prob3">
+        <div class="prob-box" id="box-h"><div class="plabel">Home Win</div><div class="pval" id="r-ph">-</div></div>
+        <div class="prob-box draw-b"><div class="plabel">Draw</div><div class="pval" id="r-pd">-</div></div>
+        <div class="prob-box" id="box-a"><div class="plabel">Away Win</div><div class="pval" id="r-pa">-</div></div>
+      </div>
+      <div class="score-sec">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px">Skor Terlaris</div>
+        <div class="score-main" id="r-score">-</div>
+        <div class="score-alt" id="r-score-alt"></div>
+      </div>
+      <div class="stats6">
+        <div class="sbox"><div class="slabel">λ Home</div><div class="sval" id="r-lh">-</div></div>
+        <div class="sbox"><div class="slabel">λ Away</div><div class="sval" id="r-la">-</div></div>
+        <div class="sbox"><div class="slabel">Elo Gap</div><div class="sval" id="r-gap">-</div></div>
+        <div class="sbox"><div class="slabel">xG/g Home</div><div class="sval" id="r-xgh">-</div></div>
+        <div class="sbox"><div class="slabel">xG/g Away</div><div class="sval" id="r-xga">-</div></div>
+        <div class="sbox"><div class="slabel">Elo H/A</div><div class="sval" id="r-elo">-</div></div>
+      </div>
+      <div style="margin-top:16px;font-size:11px;color:var(--muted);font-weight:600;margin-bottom:8px">LIVE FORM — 5 LAGA TERAKHIR (Sofascore)</div>
+      <div class="form-live" id="form-live"><div class="loading-box"><div class="spinner"></div><div>Mengambil data live...</div></div></div>
+    </div>
+    <div class="pred-card" id="gemini-box" style="display:none"><div id="gemini-content"></div></div>
+  </div>
+  <div class="tab-panel" id="panel-h2h">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden">
+      <div class="h2h-wrap"><div class="h2h-filter" id="h2h-filter"></div><div id="h2h-content"></div></div>
+    </div>
+  </div>
+  <div class="tab-panel" id="panel-standings">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden">
+      <div class="subtype-row" id="subtype-row"></div>
+      <div class="tbl-wrap" id="standings-content"></div>
+    </div>
+  </div>
+</div>
+</div>
 <script>
-const MODEL  = {"meta": {"version": "v10.0", "season": "2025/26", "generated_at": "2026-03-14 06:17:43", "leagues": ["La_Liga", "EPL", "Bundesliga"], "decay": {"2324": 0.15, "2425": 0.6, "2526": 0.25}, "data_source": "FDCO + xG_Proxy_Bayesian"}, "leagues": {"La_Liga": {"h_adv": 0.2457, "rho": -0.0406, "teams": {"Real Madrid": {"attack": 0.4959, "defense": 0.2169, "elo": 1745.0, "xg_pg": 1.984, "xga_pg": 0.955, "tier": "top"}, "Barcelona": {"attack": 0.7937, "defense": 0.0748, "elo": 1800.0, "xg_pg": 2.4, "xga_pg": 1.056, "tier": "top"}, "Atletico Madrid": {"attack": 0.3367, "defense": 0.3383, "elo": 1658.8, "xg_pg": 1.709, "xga_pg": 0.912, "tier": "top"}, "Athletic Club": {"attack": 0.0562, "defense": 0.2446, "elo": 1539.1, "xg_pg": 1.368, "xga_pg": 0.949, "tier": "mid"}, "Villarreal": {"attack": 0.3435, "defense": -0.13, "elo": 1662.4, "xg_pg": 1.76, "xga_pg": 1.35, "tier": "mid"}, "Real Sociedad": {"attack": -0.203, "defense": -0.0598, "elo": 1528.6, "xg_pg": 1.109, "xga_pg": 1.235, "tier": "mid"}, "Real Betis": {"attack": 0.183, "defense": -0.1013, "elo": 1589.4, "xg_pg": 1.439, "xga_pg": 1.273, "tier": "mid"}, "Sevilla": {"attack": -0.1186, "defense": -0.2167, "elo": 1459.7, "xg_pg": 1.171, "xga_pg": 1.431, "tier": "mid"}, "Valencia": {"attack": -0.1028, "defense": -0.1461, "elo": 1522.5, "xg_pg": 1.14, "xga_pg": 1.376, "tier": "mid"}, "Osasuna": {"attack": 0.0123, "defense": -0.1264, "elo": 1531.0, "xg_pg": 1.231, "xga_pg": 1.332, "tier": "mid"}, "Celta Vigo": {"attack": 0.2164, "defense": -0.1982, "elo": 1563.6, "xg_pg": 1.43, "xga_pg": 1.398, "tier": "mid"}, "Getafe": {"attack": -0.4049, "defense": 0.1385, "elo": 1499.8, "xg_pg": 0.955, "xga_pg": 1.112, "tier": "low"}, "Rayo Vallecano": {"attack": -0.176, "defense": -0.0074, "elo": 1511.4, "xg_pg": 1.036, "xga_pg": 1.204, "tier": "low"}, "Mallorca": {"attack": -0.3423, "defense": -0.0196, "elo": 1436.8, "xg_pg": 0.986, "xga_pg": 1.242, "tier": "low"}, "Alaves": {"attack": -0.3212, "defense": -0.0031, "elo": 1435.3, "xg_pg": 1.005, "xga_pg": 1.266, "tier": "low"}, "Girona": {"attack": 0.0031, "defense": -0.2621, "elo": 1487.7, "xg_pg": 1.296, "xga_pg": 1.482, "tier": "mid"}, "Espanyol": {"attack": -0.0912, "defense": -0.1178, "elo": 1485.8, "xg_pg": 1.114, "xga_pg": 1.349, "tier": "low"}, "Levante": {"attack": -0.1045, "defense": -0.2796, "elo": 1431.1, "xg_pg": 1.128, "xga_pg": 1.468, "tier": "low"}, "Elche": {"attack": 0.0515, "defense": -0.2171, "elo": 1437.4, "xg_pg": 1.255, "xga_pg": 1.383, "tier": "low"}, "Real Oviedo": {"attack": -0.6278, "defense": -0.259, "elo": 1409.4, "xg_pg": 0.872, "xga_pg": 1.447, "tier": "low"}}}, "EPL": {"h_adv": 0.1598, "rho": -0.0563, "teams": {"Arsenal": {"attack": 0.2422, "defense": 0.2714, "elo": 1739.6, "xg_pg": 1.867, "xga_pg": 0.902, "tier": "top"}, "Manchester City": {"attack": 0.3278, "defense": -0.0526, "elo": 1702.2, "xg_pg": 1.941, "xga_pg": 1.104, "tier": "top"}, "Liverpool": {"attack": 0.389, "defense": -0.0542, "elo": 1780.0, "xg_pg": 2.043, "xga_pg": 1.16, "tier": "top"}, "Chelsea": {"attack": 0.1854, "defense": -0.1064, "elo": 1622.1, "xg_pg": 1.717, "xga_pg": 1.239, "tier": "top"}, "Manchester United": {"attack": -0.1787, "defense": -0.282, "elo": 1597.6, "xg_pg": 1.336, "xga_pg": 1.42, "tier": "top"}, "Tottenham": {"attack": 0.1156, "defense": -0.4335, "elo": 1400.6, "xg_pg": 1.62, "xga_pg": 1.629, "tier": "top"}, "Newcastle": {"attack": 0.1406, "defense": -0.2702, "elo": 1537.9, "xg_pg": 1.737, "xga_pg": 1.35, "tier": "mid"}, "Aston Villa": {"attack": 0.0809, "defense": -0.2158, "elo": 1609.0, "xg_pg": 1.539, "xga_pg": 1.35, "tier": "mid"}, "Brighton": {"attack": 0.1262, "defense": -0.3337, "elo": 1541.0, "xg_pg": 1.573, "xga_pg": 1.483, "tier": "mid"}, "West Ham": {"attack": -0.1652, "defense": -0.4614, "elo": 1466.0, "xg_pg": 1.279, "xga_pg": 1.682, "tier": "mid"}, "Fulham": {"attack": -0.0085, "defense": -0.2972, "elo": 1520.8, "xg_pg": 1.409, "xga_pg": 1.449, "tier": "mid"}, "Wolves": {"attack": -0.1597, "defense": -0.5077, "elo": 1410.7, "xg_pg": 1.272, "xga_pg": 1.729, "tier": "mid"}, "Everton": {"attack": -0.3194, "defense": -0.0742, "elo": 1559.8, "xg_pg": 1.14, "xga_pg": 1.204, "tier": "mid"}, "Brentford": {"attack": 0.0358, "defense": -0.3434, "elo": 1572.8, "xg_pg": 1.613, "xga_pg": 1.49, "tier": "mid"}, "Crystal Palace": {"attack": -0.0668, "defense": -0.2254, "elo": 1519.5, "xg_pg": 1.329, "xga_pg": 1.345, "tier": "low"}, "Nottingham Forest": {"attack": -0.1082, "defense": -0.1743, "elo": 1474.5, "xg_pg": 1.372, "xga_pg": 1.353, "tier": "low"}, "Bournemouth": {"attack": 0.0401, "defense": -0.2125, "elo": 1560.4, "xg_pg": 1.488, "xga_pg": 1.372, "tier": "low"}, "Leeds United": {"attack": -0.0453, "defense": -0.379, "elo": 1498.2, "xg_pg": 1.306, "xga_pg": 1.531, "tier": "low"}, "Burnley": {"attack": -0.3212, "defense": -0.6114, "elo": 1354.0, "xg_pg": 1.164, "xga_pg": 1.836, "tier": "low"}, "Sunderland": {"attack": -0.3106, "defense": -0.0266, "elo": 1524.4, "xg_pg": 1.163, "xga_pg": 1.245, "tier": "low"}}}, "Bundesliga": {"h_adv": 0.1541, "rho": -0.132, "teams": {"Bayern Munich": {"attack": 0.6646, "defense": 0.1628, "elo": 1820.0, "xg_pg": 2.4, "xga_pg": 1.06, "tier": "top"}, "Bayer Leverkusen": {"attack": 0.3797, "defense": -0.0806, "elo": 1633.0, "xg_pg": 2.056, "xga_pg": 1.208, "tier": "top"}, "Borussia Dortmund": {"attack": 0.3394, "defense": -0.1611, "elo": 1691.8, "xg_pg": 1.988, "xga_pg": 1.376, "tier": "top"}, "RB Leipzig": {"attack": 0.1873, "defense": -0.2157, "elo": 1598.2, "xg_pg": 1.697, "xga_pg": 1.365, "tier": "top"}, "Eintracht Frankfurt": {"attack": 0.1754, "defense": -0.2506, "elo": 1551.4, "xg_pg": 1.835, "xga_pg": 1.479, "tier": "mid"}, "Stuttgart": {"attack": 0.268, "defense": -0.294, "elo": 1598.8, "xg_pg": 1.894, "xga_pg": 1.446, "tier": "mid"}, "Freiburg": {"attack": -0.0324, "defense": -0.3547, "elo": 1531.5, "xg_pg": 1.426, "xga_pg": 1.578, "tier": "mid"}, "Hoffenheim": {"attack": 0.0381, "defense": -0.5067, "elo": 1584.3, "xg_pg": 1.571, "xga_pg": 1.795, "tier": "mid"}, "Werder Bremen": {"attack": 0.0059, "defense": -0.433, "elo": 1463.9, "xg_pg": 1.465, "xga_pg": 1.648, "tier": "mid"}, "Augsburg": {"attack": -0.2634, "defense": -0.2662, "elo": 1487.1, "xg_pg": 1.177, "xga_pg": 1.561, "tier": "mid"}, "Wolfsburg": {"attack": 0.0115, "defense": -0.4289, "elo": 1383.1, "xg_pg": 1.503, "xga_pg": 1.675, "tier": "mid"}, "Mainz": {"attack": -0.0819, "defense": -0.2266, "elo": 1495.6, "xg_pg": 1.445, "xga_pg": 1.38, "tier": "low"}, "Borussia Monchengladbach": {"attack": -0.0394, "defense": -0.4087, "elo": 1451.1, "xg_pg": 1.507, "xga_pg": 1.687, "tier": "low"}, "Union Berlin": {"attack": -0.3076, "defense": -0.3025, "elo": 1449.5, "xg_pg": 1.101, "xga_pg": 1.546, "tier": "low"}, "St. Pauli": {"attack": -0.6009, "defense": -0.0797, "elo": 1443.3, "xg_pg": 0.934, "xga_pg": 1.314, "tier": "low"}, "FC Heidenheim": {"attack": -0.2232, "defense": -0.5285, "elo": 1335.7, "xg_pg": 1.162, "xga_pg": 1.848, "tier": "low"}, "Hamburger SV": {"attack": -0.2542, "defense": -0.2635, "elo": 1479.5, "xg_pg": 1.244, "xga_pg": 1.422, "tier": "mid"}, "FC Koln": {"attack": -0.2669, "defense": -0.4073, "elo": 1399.9, "xg_pg": 1.205, "xga_pg": 1.636, "tier": "low"}}}}};
-const TEAMS  = {"La_Liga": ["Real Madrid", "Barcelona", "Atletico Madrid", "Athletic Club", "Villarreal", "Real Sociedad", "Real Betis", "Sevilla", "Valencia", "Osasuna", "Celta Vigo", "Getafe", "Rayo Vallecano", "Mallorca", "Alaves", "Girona", "Espanyol", "Levante", "Elche", "Real Oviedo"], "EPL": ["Arsenal", "Manchester City", "Liverpool", "Chelsea", "Manchester United", "Tottenham", "Newcastle", "Aston Villa", "Brighton", "West Ham", "Fulham", "Wolves", "Everton", "Brentford", "Crystal Palace", "Nottingham Forest", "Bournemouth", "Leeds United", "Burnley", "Sunderland"], "Bundesliga": ["Bayern Munich", "Bayer Leverkusen", "Borussia Dortmund", "RB Leipzig", "Eintracht Frankfurt", "Stuttgart", "Freiburg", "Hoffenheim", "Werder Bremen", "Augsburg", "Wolfsburg", "Mainz", "Borussia Monchengladbach", "Union Berlin", "St. Pauli", "FC Heidenheim", "Hamburger SV", "FC Koln"]};
-
-function updateTeams() {
-  try {
-    const lg = document.getElementById('league').value;
-    const ts = TEAMS[lg] || [];
-    const homeEl = document.getElementById('home');
-    const awayEl = document.getElementById('away');
-    homeEl.innerHTML = '';
-    awayEl.innerHTML = '';
-    ts.forEach(function(t, i) {
-      const o1 = document.createElement('option');
-      o1.value = t; o1.text = t;
-      if(i===0) o1.selected = true;
-      homeEl.appendChild(o1);
-      const o2 = document.createElement('option');
-      o2.value = t; o2.text = t;
-      if(i===1) o2.selected = true;
-      awayEl.appendChild(o2);
-    });
-  } catch(e) { console.error('updateTeams error:', e); }
+const RKEY="07808df339msh8725aeb67cea80bp1b8358jsn031e3a75ba58";
+const RHOST="sofascore.p.rapidapi.com";
+const RH={"X-RapidAPI-Key":RKEY,"X-RapidAPI-Host":RHOST};
+const TID={EPL:17,LaLiga:8,Bundesliga:35};
+const TEAMS={
+  "Arsenal":42,"Manchester City":17,"Liverpool":44,"Chelsea":38,"Manchester Utd":35,
+  "Tottenham":33,"Newcastle":39,"Aston Villa":40,"Brentford":4396,"Everton":48,
+  "Bournemouth":60,"Fulham":43,"Brighton":211,"Crystal Palace":7,"West Ham":37,
+  "Wolves":3,"Sunderland":57,"Nottingham":14,"Ipswich":32,"Leicester":31,
+  "Barcelona":2817,"Real Madrid":2829,"Ath Madrid":2836,"Ath Bilbao":2825,
+  "Villarreal":2826,"Real Sociedad":2824,"Betis":2819,"Girona":2820,
+  "Valencia":2821,"Celta":2823,"Osasuna":2835,"Getafe":2858,"Alaves":2828,
+  "Sevilla":2833,"Espanol":2832,"Vallecano":2831,"Mallorca":2837,
+  "Las Palmas":6577,"Leganes":6434,"Valladolid":6122,
+  "Bayern Munich":2672,"Leverkusen":2681,"Dortmund":2673,"RB Leipzig":36270,
+  "Stuttgart":2674,"Ein Frankfurt":2675,"Freiburg":2686,"Wolfsburg":2690,
+  "Mainz":2676,"Union Berlin":16039,"Hoffenheim":2677,"M'gladbach":2687,
+  "Werder Bremen":2692,"Augsburg":2684,"Bochum":2685,"Holstein Kiel":28095,
+  "St Pauli":2695,"FC Koln":2680
+};
+const LG={
+  EPL:{name:"Premier League",flag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",round:30,season:"2025/26",h_adv:0.25,rho:-0.10,
+    teams:{"Arsenal":{elo:1820,atk:0.48,def:0.36},"Manchester City":{elo:1790,atk:0.45,def:0.38},
+      "Manchester Utd":{elo:1700,atk:0.28,def:0.20},"Aston Villa":{elo:1680,atk:0.24,def:0.16},
+      "Chelsea":{elo:1660,atk:0.22,def:0.14},"Liverpool":{elo:1650,atk:0.20,def:0.12},
+      "Brentford":{elo:1580,atk:0.10,def:0.02},"Everton":{elo:1560,atk:0.08,def:0.00},
+      "Bournemouth":{elo:1540,atk:0.04,def:-0.06},"Fulham":{elo:1530,atk:0.02,def:-0.08},
+      "Sunderland":{elo:1520,atk:0.00,def:-0.10},"Newcastle":{elo:1510,atk:-0.02,def:-0.12},
+      "Crystal Palace":{elo:1500,atk:-0.04,def:-0.14},"Brighton":{elo:1490,atk:-0.06,def:-0.18},
+      "Wolves":{elo:1470,atk:-0.10,def:-0.22},"West Ham":{elo:1450,atk:-0.14,def:-0.28},
+      "Tottenham":{elo:1440,atk:-0.16,def:-0.30},"Nottingham":{elo:1430,atk:-0.18,def:-0.34},
+      "Ipswich":{elo:1410,atk:-0.24,def:-0.42},"Leicester":{elo:1400,atk:-0.28,def:-0.48}}},
+  LaLiga:{name:"La Liga",flag:"🇪🇸",round:28,season:"2025/26",h_adv:0.28,rho:-0.12,
+    teams:{"Barcelona":{elo:1820,atk:0.55,def:0.38},"Real Madrid":{elo:1810,atk:0.52,def:0.35},
+      "Ath Madrid":{elo:1740,atk:0.38,def:0.45},"Ath Bilbao":{elo:1620,atk:0.15,def:0.12},
+      "Villarreal":{elo:1570,atk:0.09,def:0.05},"Real Sociedad":{elo:1600,atk:0.12,def:0.08},
+      "Betis":{elo:1580,atk:0.10,def:0.06},"Girona":{elo:1640,atk:0.18,def:0.10},
+      "Valencia":{elo:1520,atk:0.02,def:-0.05},"Celta":{elo:1510,atk:0.01,def:-0.06},
+      "Osasuna":{elo:1500,atk:0.00,def:-0.08},"Getafe":{elo:1490,atk:-0.02,def:-0.10},
+      "Alaves":{elo:1470,atk:-0.05,def:-0.15},"Sevilla":{elo:1460,atk:-0.06,def:-0.18},
+      "Espanol":{elo:1450,atk:-0.08,def:-0.22},"Vallecano":{elo:1440,atk:-0.10,def:-0.25},
+      "Mallorca":{elo:1430,atk:-0.12,def:-0.28},"Las Palmas":{elo:1420,atk:-0.15,def:-0.32},
+      "Leganes":{elo:1410,atk:-0.18,def:-0.36},"Valladolid":{elo:1400,atk:-0.22,def:-0.42}}},
+  Bundesliga:{name:"Bundesliga",flag:"🇩🇪",round:26,season:"2025/26",h_adv:0.34,rho:-0.15,
+    teams:{"Leverkusen":{elo:1757,atk:0.42,def:0.38},"Bayern Munich":{elo:1730,atk:0.54,def:0.36},
+      "Stuttgart":{elo:1645,atk:0.32,def:0.22},"RB Leipzig":{elo:1633,atk:0.18,def:0.16},
+      "Dortmund":{elo:1627,atk:0.45,def:0.14},"Ein Frankfurt":{elo:1510,atk:0.09,def:0.02},
+      "Freiburg":{elo:1547,atk:0.06,def:0.08},"Union Berlin":{elo:1437,atk:-0.02,def:-0.06},
+      "Wolfsburg":{elo:1441,atk:0.09,def:-0.08},"Mainz":{elo:1487,atk:-0.01,def:-0.04},
+      "Hoffenheim":{elo:1439,atk:-0.04,def:-0.28},"Werder Bremen":{elo:1405,atk:-0.02,def:-0.41},
+      "FC Koln":{elo:1484,atk:-0.06,def:-0.16},"M'gladbach":{elo:1433,atk:-0.08,def:-0.22},
+      "Augsburg":{elo:1435,atk:-0.10,def:-0.36},"Bochum":{elo:1414,atk:-0.14,def:-0.51},
+      "Holstein Kiel":{elo:1480,atk:-0.08,def:-0.20},"St Pauli":{elo:1480,atk:-0.08,def:-0.20}}}
+};
+async function sfGet(path,p={}){
+  const u=new URL("https://sofascore.p.rapidapi.com/"+path);
+  Object.entries(p).forEach(([k,v])=>u.searchParams.append(k,v));
+  const r=await fetch(u,{headers:RH});
+  if(!r.ok)throw new Error(r.status);
+  return r.json();
 }
-
-function poisson(k,l){
-  const f=[1,1,2,6,24,120,720,5040,40320];
-  return Math.exp(-l)*Math.pow(l,k)/f[k];
-}
-function dcTau(h,a,l,m,r){
-  if(h==0&&a==0) return 1-l*m*r;
-  if(h==0&&a==1) return 1+l*r;
-  if(h==1&&a==0) return 1+m*r;
-  if(h==1&&a==1) return 1-r;
-  return 1;
-}
-
-function dcPredict(league,home,away){
-  const lg=MODEL.leagues[league];
-  if(!lg) return null;
-  const ht=lg.teams[home],at=lg.teams[away];
-  if(!ht||!at) return null;
-  let lam=Math.exp(ht.attack-at.defense+lg.h_adv)*0.7+ht.xg_pg*0.3;
-  let mu =Math.exp(at.attack-ht.defense)*0.7+at.xg_pg*0.3;
-  const ef=(ht.elo-at.elo)/400*0.08;
-  lam=Math.max(0.3,lam+ef);
-  mu =Math.max(0.3,mu-ef);
-  const MAX=9; let pm=[],sum=0;
-  for(let h=0;h<MAX;h++){pm[h]=[];
-    for(let a=0;a<MAX;a++){
-      const v=dcTau(h,a,lam,mu,lg.rho)*poisson(h,lam)*poisson(a,mu);
-      pm[h][a]=v;sum+=v;
-    }
+async function getLast(tid){try{const d=await sfGet("teams/get-last-matches",{teamId:String(tid),pageIndex:"0"});return(d.events||[]).slice(-5)}catch{return[]}}
+async function getSt(tid){try{const d=await sfGet("tournaments/get-standings",{tournamentId:String(tid),type:"total"});return d.standings?.[0]?.rows||[]}catch{return[]}}
+async function getH2H(hid,aid){try{const d=await sfGet("teams/get-duel-matches",{homeTeamId:String(hid),awayTeamId:String(aid)});return d.events||[]}catch{return[]}}
+function parseForm(ms,tid){
+  const r=[],gf=[],ga=[];
+  for(const m of ms){
+    const ih=m.homeTeam?.id===tid;
+    const hg=m.homeScore?.current??0,ag=m.awayScore?.current??0;
+    const mg=ih?hg:ag,og=ih?ag:hg;
+    gf.push(mg);ga.push(og);
+    r.push(mg>og?"W":mg===og?"D":"L");
   }
-  let pH=0,pD=0,pA=0,scores=[];
-  for(let h=0;h<MAX;h++) for(let a=0;a<MAX;a++){
-    pm[h][a]/=sum;
-    if(h>a) pH+=pm[h][a]; else if(h===a) pD+=pm[h][a]; else pA+=pm[h][a];
-    scores.push({h,a,p:pm[h][a]});
+  const avg=a=>a.length?+(a.reduce((s,v)=>s+v,0)/a.length).toFixed(2):0;
+  return{form:r,avgGF:avg(gf),avgGA:avg(ga),pts:r.reduce((s,v)=>s+(v==="W"?3:v==="D"?1:0),0),n:ms.length};
+}
+function fmtDate(ts){if(!ts)return"";const d=new Date(ts*1000);return`${String(d.getDate()).padStart(2,"0")}.${String(d.getMonth()+1).padStart(2,"0")}.${String(d.getFullYear()).slice(-2)}`}
+function fbRow(fm){return["q",...fm].map(f=>f==="q"?`<div class="fb q">?</div>`:`<div class="fb ${f}">${f}</div>`).join("")}
+function poiPmf(k,l){if(l<=0)return k===0?1:0;let lp=k*Math.log(l)-l;for(let i=1;i<=k;i++)lp-=Math.log(i);return Math.exp(lp)}
+function tau(x,y,l,m,r){if(x===0&&y===0)return 1-l*m*r;if(x===0&&y===1)return 1+l*r;if(x===1&&y===0)return 1+m*r;if(x===1&&y===1)return 1-r;return 1}
+function compute(ht,at,lgk,lh,la){
+  const lg=LG[lgk],hd=lg.teams[ht]||{elo:1500,atk:0,def:0},ad=lg.teams[at]||{elo:1500,atk:0,def:0};
+  const gap=hd.elo-ad.elo;
+  let ah=hd.atk,dh=hd.def,aa=ad.atk,da=ad.def;
+  if(lh&&lh.n>=3){ah+=(lh.avgGF-1.4)*.3;dh+=(lh.avgGA-1.2)*.3}
+  if(la&&la.n>=3){aa+=(la.avgGF-1.4)*.3;da+=(la.avgGA-1.2)*.3}
+  let lam=Math.max(.2,Math.min(8,Math.exp(ah-da+lg.h_adv)));
+  let mu=Math.max(.2,Math.min(8,Math.exp(aa-dh)));
+  const N=9;let tot=0,pm=[];
+  for(let h=0;h<N;h++){pm[h]=[];for(let a=0;a<N;a++){const v=Math.max(0,tau(h,a,lam,mu,lg.rho)*poiPmf(h,lam)*poiPmf(a,mu));pm[h][a]=v;tot+=v}}
+  let pH=0,pD=0,pA=0,sc=[];
+  for(let h=0;h<N;h++)for(let a=0;a<N;a++){const v=pm[h][a]/tot;if(h>a)pH+=v;else if(h===a)pD+=v;else pA+=v;if(h<6&&a<6)sc.push({s:`${h}-${a}`,p:v})}
+  sc.sort((a,b)=>b.p-a.p);
+  const pred=pH>pA&&pH>pD?"HOME WIN":pA>pH&&pA>pD?"AWAY WIN":"DRAW";
+  const conf=Math.max(pH,pD,pA)>.65?"Tinggi":Math.max(pH,pD,pA)>.50?"Sedang":"Rendah";
+  const dt=lgk==="Bundesliga"?.30:.28,gt=lgk==="Bundesliga"?60:80;
+  let tier="SKIP";
+  if(conf==="Tinggi"&&pD<dt&&Math.abs(gap)>gt)tier="SNIPER";
+  else if(conf==="Sedang")tier="HOLD";
+  return{pH,pD,pA,lam,mu,gap,eH:hd.elo,eA:ad.elo,sc,pred,conf,tier}
+}
+function onLeagueChange(){
+  const lg=document.getElementById("sel-liga").value,ts=Object.keys(LG[lg].teams);
+  ["sel-home","sel-away"].forEach((id,i)=>{const el=document.getElementById(id);el.innerHTML=ts.map((t,j)=>`<option value="${t}"${j===i?"selected":""}>${t}</option>`).join("");if(i===1&&ts.length>1)el.value=ts[1]});
+}
+onLeagueChange();
+function onTeamChange(){document.getElementById("result-area").style.display="none"}
+function swTab(tab,el){
+  document.querySelectorAll(".mtab").forEach(t=>t.classList.remove("active"));el.classList.add("active");
+  ["match","h2h","standings"].forEach(p=>{const pan=document.getElementById("panel-"+p);pan.style.display=p===tab?"block":"none";pan.classList.toggle("active",p===tab)})
+}
+function renderStandings(rows,ht,at){
+  if(!rows.length){document.getElementById("standings-content").innerHTML='<div style="padding:20px;text-align:center;color:var(--muted);font-size:13px">Data tidak tersedia</div>';return}
+  document.getElementById("standings-content").innerHTML=`<table class="st"><thead><tr><th class="num">#</th><th>Tim</th><th class="num">MP</th><th class="num">W</th><th class="num">D</th><th class="num">L</th><th class="num">G</th><th class="num">GD</th><th class="num">PTS</th><th>Form</th></tr></thead><tbody>${rows.map(r=>{
+    const nm=r.team?.name||"?",cls=nm===ht?"hl":nm===at?"hl2":"",fm=(r.team?.form||"").split("").slice(-5);
+    return`<tr class="${cls}"><td class="num">${r.position}</td><td class="tn">${nm}</td><td class="num">${r.matches||0}</td><td class="num">${r.wins||0}</td><td class="num">${r.draws||0}</td><td class="num">${r.losses||0}</td><td class="num">${r.scoresFor||0}:${r.scoresAgainst||0}</td><td class="num">${r.scoreDiffFormatted||((r.scoresFor||0)-(r.scoresAgainst||0))}</td><td class="pts num">${r.points||0}</td><td><div class="fb-row">${fbRow(fm)}</div></td></tr>`
+  }).join("")}</tbody></table>`
+}
+function renderH2HData(evts,ht,at,hid){
+  window._h2h={evts,ht,at,hid};
+  document.getElementById("h2h-filter").innerHTML=`<button class="h2hf active" onclick="fH2H('all',this)">OVERALL</button><button class="h2hf" onclick="fH2H('home',this)">${ht.toUpperCase()} HOME</button><button class="h2hf" onclick="fH2H('away',this)">${at.toUpperCase()} AWAY</button>`;
+  drawH2H("all")
+}
+function fH2H(m,el){document.querySelectorAll(".h2hf").forEach(b=>b.classList.remove("active"));el.classList.add("active");drawH2H(m)}
+function drawH2H(mode){
+  const{evts,ht,at,hid}=window._h2h||{evts:[],ht:"",at:"",hid:0};
+  if(!evts.length){document.getElementById("h2h-content").innerHTML='<div style="padding:20px;text-align:center;color:var(--muted);font-size:13px">Data H2H tidak tersedia</div>';return}
+  let filtered=evts;
+  if(mode==="home")filtered=evts.filter(e=>e.homeTeam?.id===hid);
+  if(mode==="away")filtered=evts.filter(e=>e.awayTeam?.id===hid);
+  const rows=filtered.slice(0,10).map(m=>{
+    const hn=m.homeTeam?.name||"?",an=m.awayTeam?.name||"?";
+    const hs=m.homeScore?.current??"?",as=m.awayScore?.current??"?";
+    const ih=m.homeTeam?.id===hid,mg=ih?hs:as,og=ih?as:hs;
+    const res=mg>og?"W":mg===og?"D":"L";
+    return`<div class="h2h-row"><div class="h2h-date">${fmtDate(m.startTimestamp)}<br><span style="font-size:9px;color:var(--dim)">${m.tournament?.name?.slice(0,8)||"-"}</span></div><div class="h2h-t${hn===ht?" b":""}">${hn}</div><div class="h2h-s">${hs}</div><div class="h2h-sep">-</div><div class="h2h-s">${as}</div><div class="h2h-t${an===at?" b":""}">${an}</div><div class="rbox ${res}">${res}</div></div>`
+  }).join("");
+  document.getElementById("h2h-content").innerHTML=`<div class="h2h-lbl">Head-to-Head (${filtered.length} match)</div>${rows}`
+}
+async function analyze(){
+  const lgk=document.getElementById("sel-liga").value,ht=document.getElementById("sel-home").value,at=document.getElementById("sel-away").value;
+  const apiKey=document.getElementById("inp-apikey").value.trim();
+  if(ht===at){alert("Pilih dua tim berbeda!");return}
+  const btn=document.getElementById("btn-main");btn.disabled=true;btn.textContent="Mengambil data live...";
+  const lg=LG[lgk],hid=TEAMS[ht],aid=TEAMS[at],tid=TID[lgk];
+  document.getElementById("result-area").style.display="block";
+  document.getElementById("r-home").textContent=ht;document.getElementById("r-away").textContent=at;
+  document.getElementById("r-meta").textContent=`${lg.flag} ${lg.name} · Round ${lg.round} · ${lg.season}`;
+  document.querySelectorAll(".mtab").forEach((t,i)=>t.classList.toggle("active",i===0));
+  ["match","h2h","standings"].forEach(p=>{const pan=document.getElementById("panel-"+p);pan.style.display=p==="match"?"block":"none";pan.classList.toggle("active",p==="match")});
+  document.getElementById("form-live").innerHTML='<div class="loading-box"><div class="spinner"></div><div>Mengambil live form...</div></div>';
+  document.getElementById("standings-content").innerHTML='<div class="loading-box"><div class="spinner"></div><div>Mengambil standings...</div></div>';
+  document.getElementById("h2h-content").innerHTML='<div class="loading-box"><div class="spinner"></div><div>Mengambil H2H...</div></div>';
+  document.getElementById("result-area").scrollIntoView({behavior:"smooth",block:"start"});
+  let lh=null,la=null,stRows=[],h2hEvts=[];
+  try{
+    const[hm,am,sr,he]=await Promise.all([hid?getLast(hid):Promise.resolve([]),aid?getLast(aid):Promise.resolve([]),tid?getSt(tid):Promise.resolve([]),hid&&aid?getH2H(hid,aid):Promise.resolve([])]);
+    if(hm.length)lh=parseForm(hm,hid);
+    if(am.length)la=parseForm(am,aid);
+    stRows=sr;h2hEvts=he;
+  }catch(e){console.warn(e)}
+  const r=compute(ht,at,lgk,lh,la);
+  const bc=r.pred==="HOME WIN"?"b-home":r.pred==="AWAY WIN"?"b-away":"b-draw";
+  document.getElementById("r-badges").innerHTML=`<span class="pred-badge ${bc}">${r.pred}</span><span class="pred-badge b-tier">STATISTIK</span><span class="pred-badge b-tier">${r.tier}</span>`;
+  document.getElementById("r-ph").textContent=(r.pH*100).toFixed(1)+"%";
+  document.getElementById("r-pd").textContent=(r.pD*100).toFixed(1)+"%";
+  document.getElementById("r-pa").textContent=(r.pA*100).toFixed(1)+"%";
+  document.getElementById("box-h").className="prob-box"+(r.pH>r.pA&&r.pH>r.pD?" win":"");
+  document.getElementById("box-a").className="prob-box"+(r.pA>r.pH&&r.pA>r.pD?" win":"");
+  document.getElementById("r-score").textContent=r.sc[0].s;
+  document.getElementById("r-score-alt").textContent="Alternatif: "+r.sc.slice(1,3).map(s=>s.s).join(", ");
+  document.getElementById("r-lh").textContent=r.lam.toFixed(3);
+  document.getElementById("r-la").textContent=r.mu.toFixed(3);
+  document.getElementById("r-gap").textContent=r.gap;
+  document.getElementById("r-xgh").textContent=r.lam.toFixed(2);
+  document.getElementById("r-xga").textContent=r.mu.toFixed(2);
+  document.getElementById("r-elo").textContent=`${r.eH} / ${r.eA}`;
+  if(lh||la){
+    const fc=(nm,f)=>`<div class="form-card"><div class="form-card-ttl">LIVE FORM (5 laga terakhir)</div><div class="form-card-team">${nm}</div><div class="fb-row">${fbRow(f.form)}</div><div class="fstats"><div class="fstat">Pts last 5: <span>${f.pts}</span></div><div class="fstat">Avg gol: <span>${f.avgGF}</span></div><div class="fstat">Kemasukan: <span>${f.avgGA}</span></div><div class="fstat">Matches: <span>${f.n}</span></div></div></div>`;
+    document.getElementById("form-live").innerHTML=fc(ht,lh||{form:[],avgGF:0,avgGA:0,pts:0,n:0})+fc(at,la||{form:[],avgGF:0,avgGA:0,pts:0,n:0});
+  }else{
+    document.getElementById("form-live").innerHTML='<div class="err-box">Data live form tidak tersedia</div>';
   }
-  scores.sort((x,y)=>y.p-x.p);
-  const conf=Math.max(pH,pD,pA);
-  const pred=pH>pD&&pH>pA?'HOME WIN':pD>pA?'DRAW':'AWAY WIN';
-  const clbl=conf>0.55?'Tinggi':conf>0.45?'Sedang':'Rendah';
-  return {
-    home,away,league,
-    pH:pH,pD:pD,pA:pA,
-    pHf:(pH*100).toFixed(1),pDf:(pD*100).toFixed(1),pAf:(pA*100).toFixed(1),
-    conf:(conf*100).toFixed(1),confLabel:clbl,pred,
-    lam:lam.toFixed(3),mu:mu.toFixed(3),
-    eloH:ht.elo,eloA:at.elo,eloGap:(ht.elo-at.elo).toFixed(0),
-    xgH:ht.xg_pg,xgA:at.xg_pg,
-    top:scores[0].h+'-'+scores[0].a,
-    alt:scores[1].h+'-'+scores[1].a+', '+scores[2].h+'-'+scores[2].a,
-  };
+  renderStandings(stRows,ht,at);
+  if(h2hEvts.length)renderH2HData(h2hEvts,ht,at,hid);
+  else{document.getElementById("h2h-filter").innerHTML="";document.getElementById("h2h-content").innerHTML='<div style="padding:20px;text-align:center;color:var(--muted);font-size:13px">Data H2H tidak tersedia</div>'}
+  document.getElementById("subtype-row").innerHTML="";
+  btn.disabled=false;btn.textContent="Analisis Pertandingan";
+  if(apiKey){
+    document.getElementById("gemini-box").style.display="block";
+    document.getElementById("gemini-content").innerHTML='<div style="color:var(--muted);font-size:13px">Generating AI analysis...</div>';
+    const inj=document.getElementById("inp-injury").value,mot=document.getElementById("inp-motiv").value,ven=document.getElementById("inp-venue").value,h2i=document.getElementById("inp-h2h").value;
+    const lc=lh&&la?`\nForm live ${ht}: ${lh.form.join("")} (gol ${lh.avgGF}, kemasukan ${lh.avgGA})\nForm live ${at}: ${la.form.join("")} (gol ${la.avgGF}, kemasukan ${la.avgGA})`:"";
+    const prompt=`Analis sepakbola. Analisis ${ht} vs ${at} bahasa Indonesia.\nProbabilitas: Home ${(r.pH*100).toFixed(1)}% | Draw ${(r.pD*100).toFixed(1)}% | Away ${(r.pA*100).toFixed(1)}%\nTier: ${r.tier} | xG: ${r.lam.toFixed(2)}-${r.mu.toFixed(2)} | Elo Gap: ${r.gap}${lc}\n${inj?"Cedera: "+inj:""}${mot?"\nMotivasi: "+mot:""}${ven?"\nVenue: "+ven:""}${h2i?"\nH2H: "+h2i:""}\nRingkasan 4-5 kalimat: form terkini, kekuatan, faktor kunci, rekomendasi.`;
+    try{
+      const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});
+      const d=await res.json();
+      if(d.error)document.getElementById("gemini-content").innerHTML=`<div class="err-box">${d.error.message}</div>`;
+      else{const txt=d.candidates[0].content.parts[0].text;document.getElementById("gemini-content").innerHTML=`<div style="font-size:11px;color:var(--muted);margin-bottom:8px;font-weight:600">AI OVERRIDE — GEMINI ANALYSIS</div><div class="gemini-report">${txt.replace(/\n/g,"<br>").replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>")}</div>`}
+    }catch(e){document.getElementById("gemini-content").innerHTML=`<div class="err-box">${e.message}</div>`}
+  }else document.getElementById("gemini-box").style.display="none";
 }
-
-async function getGeminiOverride(p, ctx, apiKey) {
-  const ll={'EPL':'Premier League','La_Liga':'La Liga','Bundesliga':'Bundesliga'};
-  const hasContext = ctx.injuries||ctx.h2h||ctx.motivation||ctx.weather;
-
-  const prompt = `Kamu adalah analis sepakbola kuantitatif profesional berbahasa Indonesia.
-
-TUGAS UTAMA: Evaluasi hasil model statistik dan berikan PENYESUAIAN ANGKA jika ada faktor kontekstual yang signifikan.
-
-════════════════════════════════════
-PERTANDINGAN: ${p.home} vs ${p.away}
-LIGA: ${ll[p.league]} | Musim 2025/26
-════════════════════════════════════
-
-HASIL MODEL STATISTIK (Dixon-Coles + Elo):
-- Home Win  : ${p.pHf}%
-- Draw      : ${p.pDf}%
-- Away Win  : ${p.pAf}%
-- λ Home    : ${p.lam} | λ Away: ${p.mu}
-- Elo Home  : ${p.eloH} | Elo Away: ${p.eloA} (gap: ${p.eloGap})
-- xG/game   : ${p.xgH} (home) vs ${p.xgA} (away)
-- Skor      : ${p.top} | Alt: ${p.alt}
-
-FAKTOR KONTEKSTUAL (input manual):
-- Cedera/Absen : ${ctx.injuries||'Tidak ada info'}
-- H2H Recent   : ${ctx.h2h||'Tidak ada info'}
-- Motivasi     : ${ctx.motivation||'Liga reguler'}
-- Cuaca/Venue  : ${ctx.weather||'Normal'}
-
-INSTRUKSI WAJIB:
-Kamu HARUS menyesuaikan angka probabilitas berdasarkan faktor kontekstual berikut:
-
-PANDUAN ADJUSTMENT:
-- Cedera pemain kunci (top scorer/playmaker): kurangi lambda tim tersebut 15-30%
-- Cedera kiper utama: kurangi defense rating 10-20%
-- Derby/El Clasico/High stakes: naikkan probabilitas Draw 5-10%
-- Tim butuh poin (degradasi/juara): boost lambda attack 8-15%
-- Tim sudah aman/juara, laga tidak penting: kurangi lambda 10-15%
-- H2H dominan satu tim: boost probabilitas tim dominan 3-7%
-- Hujan lebat/lapangan buruk: kurangi total gol ekspektasi 10-15%
-- Kandang fanatik (Bernabeu, Anfield, Dortmund): boost home advantage 3-5%
-
-JIKA tidak ada faktor kontekstual signifikan, tetap tulis angka SAMA dengan statistik.
-
-FORMAT OUTPUT WAJIB — ikuti PERSIS seperti ini:
-
-## ⚔️ KEKUATAN & KELEMAHAN
-[2-3 kalimat analisis berdasarkan data lambda dan Elo]
-
-## 📊 ANALISIS KONTEKSTUAL  
-[Untuk setiap faktor yang diisi user, jelaskan dampak KUANTITATIF spesifik ke angka]
-
-## 🔢 ADJUSTED PROBABILITY
-HOME WIN: XX.X% | DRAW: XX.X% | AWAY WIN: XX.X%
-Perubahan: Home [+/-X.X%] Draw [+/-X.X%] Away [+/-X.X%] — [alasan 1 kalimat]
-
-## 🔮 SKENARIO & SKOR
-[Skenario utama dan alternatif skor]
-
-## 🎯 KESIMPULAN
-Prediksi Final: [HOME WIN / DRAW / AWAY WIN] | Keyakinan: [Tinggi/Sedang/Rendah]
-Alasan: [1 kalimat dengan angka spesifik]`;
-
-  try {
-    const res=await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+apiKey,
-      {method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})}
-    );
-    const d=await res.json();
-    if(d.error) return {ok:false, msg:'API Error: '+d.error.message};
-    const text=d.candidates?.[0]?.content?.parts?.[0]?.text||'';
-    return {ok:true, text};
-  } catch(e) {
-    return {ok:false, msg:'Network error: '+e.message};
-  }
-}
-
-function parseAdjusted(text) {
-  if(!text) return null;
-  var patterns = [
-    /HOME WIN[^\d]+(\d+\.?\d*)%[^\d]+DRAW[^\d]+(\d+\.?\d*)%[^\d]+AWAY WIN[^\d]+(\d+\.?\d*)%/i,
-    /HOME[^\d]+(\d+\.?\d*)%[^\d]+DRAW[^\d]+(\d+\.?\d*)%[^\d]+AWAY[^\d]+(\d+\.?\d*)%/i,
-  ];
-  for(var i=0;i<patterns.length;i++){
-    var m=text.match(patterns[i]);
-    if(m){
-      var pH=parseFloat(m[1]),pD=parseFloat(m[2]),pA=parseFloat(m[3]);
-      var total=pH+pD+pA;
-      if(total>0&&Math.abs(total-100)>5){
-        pH=pH/total*100;pD=pD/total*100;pA=pA/total*100;
-      }
-      return {pH:parseFloat(pH.toFixed(1)),pD:parseFloat(pD.toFixed(1)),pA:parseFloat(pA.toFixed(1))};
-    }
-  }
-  return null;
-}
-
-function formatReport(text) {
-  if(!text) return '';
-  var result = '';
-  var lines = text.split('\n');
-  for(var i=0;i<lines.length;i++) {
-    var line = lines[i];
-    if(line.indexOf('## ')==0) {
-      result += '<h3>' + line.substring(3) + '</h3>';
-    } else {
-      line = line.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-      result += line + '<br>';
-    }
-  }
-  return result;
-}
-
-function delta(adj, base) {
-  var d = adj - base;
-  var sign = d>=0?'+':'';
-  var col = d>0.5?'#27ae60':(d<-0.5?'#e74c3c':'#888');
-  var arrow = d>0.5?'▲':(d<-0.5?'▼':'→');
-  return '<span style="color:'+col+';font-size:12px;font-weight:700"> '+arrow+sign+d.toFixed(1)+'%</span>';
-}
-
-async function runPredict() {
-  const league=document.getElementById('league').value;
-  const home=document.getElementById('home').value;
-  const away=document.getElementById('away').value;
-  const apiKey=document.getElementById('apikey').value.trim();
-  const ctx={
-    injuries:document.getElementById('injuries').value,
-    h2h:document.getElementById('h2h').value,
-    motivation:document.getElementById('motivation').value,
-    weather:document.getElementById('weather').value,
-  };
-  if(home===away){alert('Tim tidak boleh sama!');return;}
-
-  const btn=document.getElementById('btn');
-  btn.disabled=true; btn.textContent='⏳ Menghitung...';
-  const result=document.getElementById('result');
-  result.style.display='block';
-  result.innerHTML='<div class="loading">⚙️ Menghitung probabilitas statistik...</div>';
-
-  const p=dcPredict(league,home,away);
-  if(!p){result.innerHTML='<div class="loading">❌ Tim tidak ditemukan</div>';btn.disabled=false;btn.textContent='🔮 Analisis Pertandingan';return;}
-
-  const pc=p.pred==='HOME WIN'?'#27ae60':p.pred==='DRAW'?'#f39c12':'#e74c3c';
-
-  // Tampilkan hasil statistik dulu
-  result.innerHTML=`
-  <div class="result-card">
-    <div class="match-title">${p.home} <span style="color:var(--muted);font-size:16px">vs</span> ${p.away}</div>
-    <div style="text-align:center;margin:8px 0">
-      <span class="badge" style="background:${pc}">${p.pred}</span>
-      <span class="tag stat">STATISTIK</span>
-    </div>
-
-    <div class="probs-section">
-      <div class="section-label">📊 Probabilitas Statistik (Dixon-Coles + Elo)</div>
-      <div class="probs">
-        <div class="prob-box base" style="border-color:#27ae60">
-          <div class="prob-label">Home Win</div>
-          <div class="prob-val" style="color:#27ae60" id="ph-stat">${p.pHf}%</div>
-        </div>
-        <div class="prob-box base" style="border-color:#f39c12">
-          <div class="prob-label">Draw</div>
-          <div class="prob-val" style="color:#f39c12" id="pd-stat">${p.pDf}%</div>
-        </div>
-        <div class="prob-box base" style="border-color:#e74c3c">
-          <div class="prob-label">Away Win</div>
-          <div class="prob-val" style="color:#e74c3c" id="pa-stat">${p.pAf}%</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="probs-section" id="adj-section" style="display:none">
-      <div class="section-label">🤖 Probabilitas Setelah AI Override <span class="tag ai">GEMINI</span></div>
-      <div class="probs">
-        <div class="prob-box adj" style="border-color:#27ae60">
-          <div class="prob-label">Home Win</div>
-          <div class="prob-val" style="color:#27ae60" id="ph-adj">-</div>
-        </div>
-        <div class="prob-box adj" style="border-color:#f39c12">
-          <div class="prob-label">Draw</div>
-          <div class="prob-val" style="color:#f39c12" id="pd-adj">-</div>
-        </div>
-        <div class="prob-box adj" style="border-color:#e74c3c">
-          <div class="prob-label">Away Win</div>
-          <div class="prob-val" style="color:#e74c3c" id="pa-adj">-</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="score-row">
-      <div><div class="score-label">Skor Terlaris</div>
-        <div class="score-big" style="color:${pc}">${p.top}</div></div>
-      <div style="color:var(--muted);font-size:20px;padding:0 10px">|</div>
-      <div><div class="score-label">Alternatif</div>
-        <div style="font-size:18px;font-weight:600;color:var(--muted)">${p.alt}</div></div>
-    </div>
-
-    <div class="stats-grid">
-      <div class="stat-box"><div class="stat-label">λ Home</div><div class="stat-val">${p.lam}</div></div>
-      <div class="stat-box"><div class="stat-label">λ Away</div><div class="stat-val">${p.mu}</div></div>
-      <div class="stat-box"><div class="stat-label">Elo Gap</div><div class="stat-val">${p.eloGap}</div></div>
-      <div class="stat-box"><div class="stat-label">xG/g Home</div><div class="stat-val">${p.xgH}</div></div>
-      <div class="stat-box"><div class="stat-label">xG/g Away</div><div class="stat-val">${p.xgA}</div></div>
-      <div class="stat-box"><div class="stat-label">Elo Home/Away</div><div class="stat-val" style="font-size:12px">${p.eloH} / ${p.eloA}</div></div>
-    </div>
-
-    <div class="report-box" id="report-text">
-      ${apiKey ? '⏳ Gemini sedang menganalisis konteks dan menyesuaikan angka...' : '💡 Masukkan Gemini API Key untuk mengaktifkan AI Override — angka probabilitas akan disesuaikan berdasarkan cedera, H2H, dan motivasi.'}
-    </div>
-  </div>`;
-
-  // Jalankan Gemini jika ada API key
-  if(apiKey) {
-    result.querySelector('#report-text').innerHTML='⏳ Gemini menganalisis faktor kontekstual...';
-    const aiResult = await getGeminiOverride(p, ctx, apiKey);
-
-    if(aiResult.ok) {
-      // Parse adjusted probability
-      const adj = parseAdjusted(aiResult.text);
-      if(adj) {
-        document.getElementById('adj-section').style.display='block';
-        document.getElementById('ph-adj').innerHTML = adj.pH.toFixed(1)+'%' + delta(adj.pH, p.pH*100);
-        document.getElementById('pd-adj').innerHTML = adj.pD.toFixed(1)+'%' + delta(adj.pD, p.pD*100);
-        document.getElementById('pa-adj').innerHTML = adj.pA.toFixed(1)+'%' + delta(adj.pA, p.pA*100);
-      }
-      document.getElementById('report-text').innerHTML = formatReport(aiResult.text);
-    } else {
-      document.getElementById('report-text').textContent = '⚠️ ' + aiResult.msg + '\n\nPastikan API key valid dan coba lagi.';
-    }
-  }
-
-  btn.disabled=false; btn.textContent='🔮 Analisis Pertandingan';
-}
-
-updateTeams();
 </script>
 </body>
 </html>
