@@ -364,7 +364,10 @@ async function runPredict() {
   btn.disabled=false; btn.textContent='🔮 Analisis Pertandingan';
 }
 
-updateTeams();
+window.addEventListener('load', function() {
+  updateTeams();
+});
+```
 </script>
 </body>
 </html>
