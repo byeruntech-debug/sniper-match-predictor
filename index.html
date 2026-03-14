@@ -200,29 +200,39 @@ FAKTOR KONTEKSTUAL (input manual):
 - Motivasi     : ${ctx.motivation||'Liga reguler'}
 - Cuaca/Venue  : ${ctx.weather||'Normal'}
 
-INSTRUKSI:
-1. Analisis apakah faktor kontekstual di atas SIGNIFIKAN mengubah probabilitas
-2. Jika ada cedera pemain kunci, estimasi dampaknya terhadap lambda (contoh: Mbappe = ~25% output serangan Madrid)
-3. Berikan angka ADJUSTED probability jika perlu, atau konfirmasi angka statistik sudah akurat
+INSTRUKSI WAJIB:
+Kamu HARUS menyesuaikan angka probabilitas berdasarkan faktor kontekstual berikut:
 
-Tulis dengan format EXACT ini:
+PANDUAN ADJUSTMENT:
+- Cedera pemain kunci (top scorer/playmaker): kurangi lambda tim tersebut 15-30%
+- Cedera kiper utama: kurangi defense rating 10-20%
+- Derby/El Clasico/High stakes: naikkan probabilitas Draw 5-10%
+- Tim butuh poin (degradasi/juara): boost lambda attack 8-15%
+- Tim sudah aman/juara, laga tidak penting: kurangi lambda 10-15%
+- H2H dominan satu tim: boost probabilitas tim dominan 3-7%
+- Hujan lebat/lapangan buruk: kurangi total gol ekspektasi 10-15%
+- Kandang fanatik (Bernabeu, Anfield, Dortmund): boost home advantage 3-5%
+
+JIKA tidak ada faktor kontekstual signifikan, tetap tulis angka SAMA dengan statistik.
+
+FORMAT OUTPUT WAJIB — ikuti PERSIS seperti ini:
 
 ## ⚔️ KEKUATAN & KELEMAHAN
-[2-3 kalimat perbandingan kekuatan kedua tim]
+[2-3 kalimat analisis berdasarkan data lambda dan Elo]
 
-## 📊 ANALISIS KONTEKSTUAL
-[Analisis dampak cedera/H2H/motivasi terhadap angka. Sebutkan angka spesifik]
+## 📊 ANALISIS KONTEKSTUAL  
+[Untuk setiap faktor yang diisi user, jelaskan dampak KUANTITATIF spesifik ke angka]
 
 ## 🔢 ADJUSTED PROBABILITY
-HOME WIN: [angka]% | DRAW: [angka]% | AWAY WIN: [angka]%
-Perubahan dari statistik: [jelaskan delta dan alasannya, atau tulis "Tidak ada perubahan signifikan"]
+HOME WIN: XX.X% | DRAW: XX.X% | AWAY WIN: XX.X%
+Perubahan: Home [+/-X.X%] Draw [+/-X.X%] Away [+/-X.X%] — [alasan 1 kalimat]
 
 ## 🔮 SKENARIO & SKOR
-[Skenario paling mungkin + alternatif skor]
+[Skenario utama dan alternatif skor]
 
 ## 🎯 KESIMPULAN
 Prediksi Final: [HOME WIN / DRAW / AWAY WIN] | Keyakinan: [Tinggi/Sedang/Rendah]
-[1 kalimat alasan utama]`;
+Alasan: [1 kalimat dengan angka spesifik]`;
 
   try {
     const res=await fetch(
@@ -240,9 +250,23 @@ Prediksi Final: [HOME WIN / DRAW / AWAY WIN] | Keyakinan: [Tinggi/Sedang/Rendah]
 }
 
 function parseAdjusted(text) {
-  const match = text.match(/HOME WIN:\s*([\d.]+)%\s*\|\s*DRAW:\s*([\d.]+)%\s*\|\s*AWAY WIN:\s*([\d.]+)%/i);
-  if(!match) return null;
-  return {pH:parseFloat(match[1]),pD:parseFloat(match[2]),pA:parseFloat(match[3])};
+  if(!text) return null;
+  var patterns = [
+    /HOME WIN[^\d]+(\d+\.?\d*)%[^\d]+DRAW[^\d]+(\d+\.?\d*)%[^\d]+AWAY WIN[^\d]+(\d+\.?\d*)%/i,
+    /HOME[^\d]+(\d+\.?\d*)%[^\d]+DRAW[^\d]+(\d+\.?\d*)%[^\d]+AWAY[^\d]+(\d+\.?\d*)%/i,
+  ];
+  for(var i=0;i<patterns.length;i++){
+    var m=text.match(patterns[i]);
+    if(m){
+      var pH=parseFloat(m[1]),pD=parseFloat(m[2]),pA=parseFloat(m[3]);
+      var total=pH+pD+pA;
+      if(total>0&&Math.abs(total-100)>5){
+        pH=pH/total*100;pD=pD/total*100;pA=pA/total*100;
+      }
+      return {pH:parseFloat(pH.toFixed(1)),pD:parseFloat(pD.toFixed(1)),pA:parseFloat(pA.toFixed(1))};
+    }
+  }
+  return null;
 }
 
 function formatReport(text) {
@@ -262,11 +286,11 @@ function formatReport(text) {
 }
 
 function delta(adj, base) {
-  const d = adj - base;
-  if(Math.abs(d)<0.5) return '';
-  const sign = d>0?'+':'';
-  const col = d>0?'#27ae60':'#e74c3c';
-  return '<span style="color:'+col+';font-size:11px"> ('+sign+d.toFixed(1)+'%)</span>';
+  var d = adj - base;
+  var sign = d>=0?'+':'';
+  var col = d>0.5?'#27ae60':(d<-0.5?'#e74c3c':'#888');
+  var arrow = d>0.5?'▲':(d<-0.5?'▼':'→');
+  return '<span style="color:'+col+';font-size:12px;font-weight:700"> '+arrow+sign+d.toFixed(1)+'%</span>';
 }
 
 async function runPredict() {
