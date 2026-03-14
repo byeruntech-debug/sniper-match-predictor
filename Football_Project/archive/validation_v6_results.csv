@@ -1,0 +1,51 @@
+match,actual,predicted,correct,confidence,consensus
+Real Madrid vs Vallecano,home_win,home_win,True,Tinggi,3
+Betis vs Valencia,home_win,home_win,True,Tinggi,3
+Mallorca vs Sevilla,home_win,home_win,True,Tinggi,3
+Celta vs Osasuna,away_win,home_win,False,Tinggi,3
+Barcelona vs Mallorca,home_win,home_win,True,Tinggi,3
+Sociedad vs Elche,home_win,home_win,True,Sedang,2
+Alaves vs Getafe,away_win,home_win,False,Rendah,1
+Ath Bilbao vs Levante,home_win,home_win,True,Tinggi,3
+Sevilla vs Girona,draw,home_win,False,Sedang,2
+Ath Madrid vs Betis,away_win,home_win,False,Tinggi,3
+Valencia vs Real Madrid,away_win,away_win,True,Tinggi,3
+Villarreal vs Espanol,home_win,home_win,True,Tinggi,3
+Elche vs Osasuna,draw,home_win,False,Tinggi,3
+Espanol vs Celta,draw,draw,True,Rendah,0
+Getafe vs Villarreal,home_win,away_win,False,Tinggi,3
+Sevilla vs Alaves,draw,home_win,False,Tinggi,3
+Real Madrid vs Sociedad,home_win,home_win,True,Tinggi,3
+Oviedo vs Ath Bilbao,away_win,draw,False,Rendah,1
+Vallecano vs Ath Madrid,home_win,away_win,False,Sedang,2
+Levante vs Valencia,away_win,home_win,False,Tinggi,3
+Mallorca vs Betis,away_win,away_win,True,Tinggi,3
+Girona vs Barcelona,home_win,away_win,False,Tinggi,3
+Levante vs Villarreal,away_win,away_win,True,Tinggi,3
+Ath Bilbao vs Elche,home_win,draw,False,Rendah,0
+Sociedad vs Oviedo,draw,home_win,False,Tinggi,2
+Betis vs Vallecano,draw,home_win,False,Tinggi,3
+Osasuna vs Real Madrid,home_win,away_win,False,Tinggi,3
+Ath Madrid vs Espanol,home_win,home_win,True,Tinggi,3
+Getafe vs Sevilla,away_win,draw,False,Rendah,1
+Barcelona vs Levante,home_win,home_win,True,Tinggi,3
+Celta vs Mallorca,home_win,home_win,True,Tinggi,3
+Villarreal vs Valencia,home_win,home_win,True,Tinggi,3
+Alaves vs Girona,draw,draw,True,Rendah,0
+Levante vs Alaves,home_win,home_win,True,Tinggi,3
+Barcelona vs Villarreal,home_win,home_win,True,Tinggi,3
+Vallecano vs Ath Bilbao,draw,draw,True,Rendah,1
+Oviedo vs Ath Madrid,away_win,away_win,True,Tinggi,2
+Mallorca vs Sociedad,away_win,draw,False,Rendah,0
+Elche vs Espanol,draw,draw,True,Rendah,0
+Valencia vs Osasuna,home_win,draw,False,Rendah,0
+Betis vs Sevilla,draw,home_win,False,Tinggi,3
+Girona vs Celta,away_win,away_win,True,Rendah,1
+Real Madrid vs Getafe,away_win,home_win,False,Tinggi,3
+Vallecano vs Oviedo,home_win,home_win,True,Tinggi,3
+Celta vs Real Madrid,away_win,away_win,True,Tinggi,3
+Ath Madrid vs Sociedad,home_win,home_win,True,Tinggi,3
+Ath Bilbao vs Barcelona,away_win,away_win,True,Tinggi,3
+Osasuna vs Mallorca,draw,home_win,False,Sedang,2
+Levante vs Girona,draw,home_win,False,Tinggi,3
+Villarreal vs Elche,home_win,home_win,True,Tinggi,3

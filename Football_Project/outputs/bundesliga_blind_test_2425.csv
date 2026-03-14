@@ -1,0 +1,273 @@
+date,home,away,actual,predicted,correct,tier,h_prob,d_prob,a_prob,brier,elo_home,elo_away,elo_gap,season
+2024-08-23 00:00:00,M'gladbach,Leverkusen,away_win,home_win,False,SKIP,0.4139,0.2697,0.3164,0.7113,1433.7,1757.5,-323.7,2024/25
+2024-08-24 00:00:00,Augsburg,Werder Bremen,draw,home_win,False,SKIP,0.4322,0.2681,0.2997,0.8123,1435.7,1485.7,-49.9,2024/25
+2024-08-24 00:00:00,Freiburg,Stuttgart,home_win,home_win,True,HOLD,0.5809,0.2569,0.1622,0.268,1463.8,1645.2,-181.4,2024/25
+2024-08-24 00:00:00,Hoffenheim,Holstein Kiel,home_win,home_win,True,SKIP,0.4296,0.2838,0.2866,0.4881,1490.7,1480.0,10.7,2024/25
+2024-08-24 00:00:00,Mainz,Union Berlin,draw,home_win,False,SKIP,0.3599,0.304,0.3361,0.7269,1496.6,1437.5,59.1,2024/25
+2024-08-24 00:00:00,RB Leipzig,Bochum,home_win,home_win,True,SNIPER,0.7907,0.1456,0.0637,0.0691,1633.5,1414.4,219.1,2024/25
+2024-08-24 00:00:00,Dortmund,Ein Frankfurt,home_win,home_win,True,SNIPER,0.6966,0.1768,0.1266,0.1394,1627.0,1520.9,106.1,2024/25
+2024-08-25 00:00:00,Wolfsburg,Bayern Munich,away_win,away_win,True,SKIP,0.2686,0.2461,0.4853,0.3976,1441.0,1630.3,-189.2,2024/25
+2024-08-30 00:00:00,Union Berlin,St Pauli,home_win,home_win,True,HOLD,0.5559,0.2758,0.1683,0.3017,1442.4,1480.0,-37.6,2024/25
+2024-08-31 00:00:00,Holstein Kiel,Wolfsburg,away_win,home_win,False,SKIP,0.3926,0.2848,0.3226,0.6942,1466.8,1431.1,35.6,2024/25
+2024-08-31 00:00:00,Ein Frankfurt,Hoffenheim,home_win,home_win,True,HOLD,0.5809,0.2355,0.1836,0.2648,1511.7,1503.9,7.7,2024/25
+2024-08-31 00:00:00,Bochum,M'gladbach,away_win,away_win,True,SKIP,0.3191,0.2688,0.4121,0.5197,1408.8,1428.3,-19.5,2024/25
+2024-08-31 00:00:00,Leverkusen,RB Leipzig,away_win,home_win,False,SKIP,0.3754,0.2817,0.3429,0.652,1762.9,1639.1,123.8,2024/25
+2024-08-31 00:00:00,Werder Bremen,Dortmund,draw,away_win,False,SNIPER,0.216,0.2154,0.5686,0.9856,1485.7,1636.3,-150.6,2024/25
+2024-08-31 00:00:00,Stuttgart,Mainz,draw,home_win,False,SKIP,0.3999,0.2782,0.3219,0.7845,1623.4,1491.8,131.7,2024/25
+2024-09-01 00:00:00,Bayern Munich,Freiburg,home_win,home_win,True,SNIPER,0.7147,0.1831,0.1022,0.1254,1640.2,1485.5,154.6,2024/25
+2024-09-14 00:00:00,Hoffenheim,Leverkusen,away_win,home_win,False,SKIP,0.371,0.2787,0.3504,0.6373,1490.6,1739.5,-249.0,2024/25
+2024-09-14 00:00:00,M'gladbach,Stuttgart,away_win,home_win,False,HOLD,0.5363,0.2546,0.209,0.9782,1445.7,1615.7,-170.1,2024/25
+2024-09-14 00:00:00,Freiburg,Bochum,home_win,home_win,True,SNIPER,0.692,0.203,0.1049,0.1471,1478.0,1391.4,86.6,2024/25
+2024-09-14 00:00:00,Wolfsburg,Ein Frankfurt,away_win,home_win,False,HOLD,0.5123,0.2523,0.2354,0.9107,1451.0,1525.0,-74.1,2024/25
+2024-09-14 00:00:00,Holstein Kiel,Bayern Munich,away_win,away_win,True,SNIPER,0.2018,0.2351,0.5632,0.2868,1446.9,1647.7,-200.8,2024/25
+2024-09-14 00:00:00,RB Leipzig,Union Berlin,draw,home_win,False,SKIP,0.4899,0.2946,0.2155,0.784,1662.5,1457.8,204.7,2024/25
+2024-09-15 00:00:00,Augsburg,St Pauli,home_win,home_win,True,SKIP,0.3651,0.2946,0.3403,0.6056,1435.7,1464.6,-28.8,2024/25
+2024-09-15 00:00:00,Mainz,Werder Bremen,away_win,home_win,False,HOLD,0.5721,0.2278,0.2001,1.019,1499.4,1490.2,9.2,2024/25
+2024-09-20 00:00:00,Augsburg,Mainz,away_win,away_win,True,SKIP,0.3569,0.2805,0.3626,0.6123,1450.8,1480.7,-30.0,2024/25
+2024-09-21 00:00:00,Werder Bremen,Bayern Munich,away_win,away_win,True,SNIPER,0.1604,0.1938,0.6458,0.1888,1508.9,1657.2,-148.3,2024/25
+2024-09-21 00:00:00,Bochum,Holstein Kiel,draw,away_win,False,SKIP,0.3137,0.2816,0.4047,0.7783,1381.4,1437.4,-56.1,2024/25
+2024-09-21 00:00:00,Ein Frankfurt,M'gladbach,home_win,home_win,True,SNIPER,0.5474,0.2404,0.2122,0.3077,1539.9,1435.0,105.0,2024/25
+2024-09-21 00:00:00,Union Berlin,Hoffenheim,home_win,home_win,True,HOLD,0.6001,0.2546,0.1454,0.2459,1467.8,1482.8,-15.0,2024/25
+2024-09-22 00:00:00,Leverkusen,Wolfsburg,home_win,home_win,True,SKIP,0.4666,0.2664,0.267,0.4268,1747.3,1436.1,311.2,2024/25
+2024-09-22 00:00:00,Stuttgart,Dortmund,home_win,away_win,False,HOLD,0.2115,0.235,0.5535,0.9832,1626.4,1631.8,-5.4,2024/25
+2024-09-22 00:00:00,St Pauli,RB Leipzig,draw,away_win,False,SKIP,0.3095,0.29,0.4004,0.7602,1449.5,1652.5,-203.0,2024/25
+2024-09-27 00:00:00,Dortmund,Bochum,home_win,home_win,True,SNIPER,0.8707,0.0907,0.0386,0.0264,1617.8,1381.7,236.2,2024/25
+2024-09-28 00:00:00,M'gladbach,Union Berlin,home_win,away_win,False,SKIP,0.3437,0.3054,0.3509,0.647,1425.7,1482.2,-56.5,2024/25
+2024-09-28 00:00:00,Freiburg,St Pauli,away_win,home_win,False,HOLD,0.5223,0.2775,0.2003,0.9893,1488.0,1456.2,31.9,2024/25
+2024-09-28 00:00:00,Wolfsburg,Stuttgart,draw,home_win,False,HOLD,0.6132,0.2321,0.1547,0.9897,1432.5,1640.4,-207.8,2024/25
+2024-09-28 00:00:00,Bayern Munich,Leverkusen,draw,home_win,False,HOLD,0.7437,0.1601,0.0962,1.2678,1668.8,1750.8,-82.1,2024/25
+2024-09-28 00:00:00,RB Leipzig,Augsburg,home_win,home_win,True,SNIPER,0.7256,0.1852,0.0892,0.1176,1645.9,1433.8,212.0,2024/25
+2024-09-29 00:00:00,Holstein Kiel,Ein Frankfurt,away_win,home_win,False,SKIP,0.4225,0.2755,0.3019,0.7417,1437.2,1549.2,-112.1,2024/25
+2024-09-29 00:00:00,Hoffenheim,Werder Bremen,away_win,home_win,False,HOLD,0.5035,0.2513,0.2452,0.8865,1468.5,1497.3,-28.9,2024/25
+2024-10-04 00:00:00,Augsburg,M'gladbach,home_win,home_win,True,SKIP,0.3731,0.2815,0.3454,0.5916,1428.0,1442.0,-13.9,2024/25
+2024-10-05 00:00:00,Bochum,Wolfsburg,away_win,away_win,True,SKIP,0.247,0.2604,0.4926,0.3863,1376.5,1439.4,-62.9,2024/25
+2024-10-05 00:00:00,Leverkusen,Holstein Kiel,draw,home_win,False,SNIPER,0.5401,0.2565,0.2033,0.8858,1749.3,1424.0,325.4,2024/25
+2024-10-05 00:00:00,Union Berlin,Dortmund,home_win,home_win,True,SKIP,0.3638,0.2853,0.3509,0.6093,1465.9,1623.0,-157.1,2024/25
+2024-10-05 00:00:00,Werder Bremen,Freiburg,away_win,away_win,True,SKIP,0.3521,0.2827,0.3652,0.6069,1514.3,1468.3,46.0,2024/25
+2024-10-05 00:00:00,St Pauli,Mainz,away_win,home_win,False,SKIP,0.4592,0.272,0.2688,0.8195,1475.9,1497.7,-21.8,2024/25
+2024-10-06 00:00:00,Ein Frankfurt,Bayern Munich,draw,away_win,False,SNIPER,0.2466,0.2338,0.5197,0.9179,1562.4,1670.2,-107.8,2024/25
+2024-10-06 00:00:00,Stuttgart,Hoffenheim,draw,home_win,False,SKIP,0.4503,0.2797,0.27,0.7945,1633.6,1451.5,182.1,2024/25
+2024-10-18 00:00:00,Dortmund,St Pauli,home_win,home_win,True,SNIPER,0.7288,0.1704,0.1008,0.1128,1602.2,1458.6,143.6,2024/25
+2024-10-19 00:00:00,Leverkusen,Ein Frankfurt,home_win,home_win,True,SKIP,0.4994,0.2542,0.2465,0.376,1736.7,1565.1,171.6,2024/25
+2024-10-19 00:00:00,Freiburg,Augsburg,home_win,home_win,True,HOLD,0.6212,0.2413,0.1375,0.2206,1488.6,1442.4,46.2,2024/25
+2024-10-19 00:00:00,Hoffenheim,Bochum,home_win,home_win,True,SNIPER,0.6076,0.2295,0.1629,0.2331,1460.8,1361.1,99.7,2024/25
+2024-10-19 00:00:00,Bayern Munich,Stuttgart,home_win,home_win,True,HOLD,0.8346,0.1152,0.0502,0.0432,1667.6,1624.2,43.4,2024/25
+2024-10-19 00:00:00,Mainz,RB Leipzig,away_win,away_win,True,SKIP,0.3298,0.277,0.3931,0.5538,1514.9,1651.7,-136.7,2024/25
+2024-10-20 00:00:00,Holstein Kiel,Union Berlin,away_win,away_win,True,SKIP,0.338,0.3187,0.3433,0.6471,1436.7,1486.7,-50.0,2024/25
+2024-10-20 00:00:00,Wolfsburg,Werder Bremen,away_win,home_win,False,HOLD,0.6328,0.2113,0.1558,1.1577,1454.8,1494.0,-39.2,2024/25
+2024-10-25 00:00:00,Mainz,M'gladbach,draw,home_win,False,SNIPER,0.5058,0.2519,0.2423,0.8741,1502.9,1427.6,75.2,2024/25
+2024-10-26 00:00:00,RB Leipzig,Freiburg,home_win,home_win,True,SNIPER,0.5513,0.2662,0.1826,0.3056,1663.8,1500.3,163.5,2024/25
+2024-10-26 00:00:00,Augsburg,Dortmund,home_win,away_win,False,SNIPER,0.1789,0.222,0.5992,1.0825,1430.7,1610.1,-179.4,2024/25
+2024-10-26 00:00:00,St Pauli,Wolfsburg,draw,home_win,False,SKIP,0.3926,0.2848,0.3226,0.7697,1450.7,1438.3,12.4,2024/25
+2024-10-26 00:00:00,Werder Bremen,Leverkusen,draw,away_win,False,SKIP,0.3652,0.2625,0.3723,0.8158,1510.5,1743.6,-233.2,2024/25
+2024-10-26 00:00:00,Stuttgart,Holstein Kiel,home_win,home_win,True,SKIP,0.4068,0.2911,0.3021,0.5278,1612.4,1420.7,191.7,2024/25
+2024-10-27 00:00:00,Bochum,Bayern Munich,away_win,away_win,True,SNIPER,0.0971,0.16,0.7429,0.1011,1351.6,1679.4,-327.8,2024/25
+2024-10-27 00:00:00,Union Berlin,Ein Frankfurt,draw,home_win,False,HOLD,0.5218,0.2752,0.203,0.8388,1502.7,1558.1,-55.4,2024/25
+2024-11-01 00:00:00,Leverkusen,Stuttgart,draw,home_win,False,SNIPER,0.6015,0.2356,0.1628,0.9726,1735.9,1618.8,117.1,2024/25
+2024-11-02 00:00:00,Hoffenheim,St Pauli,away_win,home_win,False,SKIP,0.4296,0.2838,0.2866,0.774,1470.3,1447.8,22.5,2024/25
+2024-11-02 00:00:00,Bayern Munich,Union Berlin,home_win,home_win,True,SNIPER,0.6513,0.2185,0.1302,0.1863,1684.8,1502.9,181.8,2024/25
+2024-11-02 00:00:00,Ein Frankfurt,Bochum,home_win,home_win,True,SNIPER,0.7115,0.181,0.1074,0.1275,1557.8,1346.2,211.6,2024/25
+2024-11-02 00:00:00,Dortmund,RB Leipzig,home_win,home_win,True,HOLD,0.5637,0.2309,0.2054,0.2859,1588.4,1671.0,-82.6,2024/25
+2024-11-02 00:00:00,Wolfsburg,Augsburg,draw,home_win,False,HOLD,0.6546,0.2158,0.1296,1.0603,1441.1,1452.4,-11.3,2024/25
+2024-11-03 00:00:00,Freiburg,Mainz,draw,home_win,False,HOLD,0.5204,0.267,0.2126,0.8534,1493.1,1497.3,-4.3,2024/25
+2024-11-03 00:00:00,M'gladbach,Werder Bremen,home_win,home_win,True,HOLD,0.552,0.2342,0.2138,0.3013,1433.2,1518.2,-85.0,2024/25
+2024-11-08 00:00:00,Union Berlin,Freiburg,draw,home_win,False,SKIP,0.4808,0.308,0.2113,0.7547,1496.3,1491.0,5.3,2024/25
+2024-11-09 00:00:00,Mainz,Dortmund,home_win,away_win,False,SKIP,0.2785,0.2401,0.4814,0.8101,1499.4,1605.9,-106.5,2024/25
+2024-11-09 00:00:00,Werder Bremen,Holstein Kiel,home_win,home_win,True,SKIP,0.4271,0.269,0.304,0.493,1500.6,1414.3,86.3,2024/25
+2024-11-09 00:00:00,Bochum,Leverkusen,draw,away_win,False,SKIP,0.2582,0.2619,0.4798,0.8416,1340.4,1728.8,-388.4,2024/25
+2024-11-09 00:00:00,RB Leipzig,M'gladbach,draw,home_win,False,SNIPER,0.6476,0.215,0.1374,1.0545,1653.5,1450.8,202.7,2024/25
+2024-11-09 00:00:00,St Pauli,Bayern Munich,away_win,away_win,True,SNIPER,0.2018,0.2351,0.5632,0.2868,1467.1,1691.4,-224.3,2024/25
+2024-11-10 00:00:00,Augsburg,Hoffenheim,draw,home_win,False,SKIP,0.4066,0.2862,0.3072,0.7693,1454.2,1451.0,3.2,2024/25
+2024-11-10 00:00:00,Stuttgart,Ein Frankfurt,away_win,home_win,False,SKIP,0.3641,0.2779,0.358,0.622,1625.9,1563.6,62.3,2024/25
+2024-11-22 00:00:00,Bayern Munich,Augsburg,home_win,home_win,True,SNIPER,0.8626,0.0985,0.0388,0.0301,1700.0,1451.8,248.3,2024/25
+2024-11-23 00:00:00,Hoffenheim,RB Leipzig,home_win,away_win,False,SKIP,0.277,0.2792,0.4438,0.7976,1453.5,1643.6,-190.1,2024/25
+2024-11-23 00:00:00,Dortmund,Freiburg,home_win,home_win,True,SNIPER,0.649,0.2105,0.1405,0.1872,1587.3,1493.5,93.8,2024/25
+2024-11-23 00:00:00,Stuttgart,Bochum,home_win,home_win,True,SNIPER,0.582,0.2417,0.1762,0.2642,1604.9,1352.4,252.6,2024/25
+2024-11-23 00:00:00,Ein Frankfurt,Werder Bremen,home_win,home_win,True,SNIPER,0.6141,0.2135,0.1724,0.2242,1584.6,1510.6,74.0,2024/25
+2024-11-23 00:00:00,Wolfsburg,Union Berlin,home_win,home_win,True,SKIP,0.4142,0.3047,0.2811,0.515,1439.3,1493.7,-54.4,2024/25
+2024-11-24 00:00:00,Holstein Kiel,Mainz,away_win,home_win,False,SKIP,0.4592,0.272,0.2688,0.8195,1404.3,1518.0,-113.7,2024/25
+2024-11-24 00:00:00,M'gladbach,St Pauli,home_win,home_win,True,SKIP,0.4741,0.2703,0.2556,0.4149,1460.7,1458.5,2.2,2024/25
+2024-11-29 00:00:00,St Pauli,Holstein Kiel,home_win,home_win,True,SKIP,0.4641,0.2835,0.2525,0.4313,1444.9,1391.2,53.7,2024/25
+2024-11-30 00:00:00,Augsburg,Bochum,home_win,home_win,True,SNIPER,0.5368,0.2564,0.2068,0.323,1446.9,1347.6,99.3,2024/25
+2024-11-30 00:00:00,Freiburg,M'gladbach,home_win,home_win,True,HOLD,0.5366,0.2633,0.2001,0.324,1483.8,1474.3,9.4,2024/25
+2024-11-30 00:00:00,RB Leipzig,Wolfsburg,away_win,home_win,False,SNIPER,0.5624,0.2486,0.189,1.0358,1621.4,1455.5,165.9,2024/25
+2024-11-30 00:00:00,Union Berlin,Leverkusen,away_win,home_win,False,HOLD,0.5041,0.2848,0.2111,0.9576,1477.5,1716.7,-239.2,2024/25
+2024-11-30 00:00:00,Werder Bremen,Stuttgart,draw,home_win,False,SKIP,0.4901,0.2581,0.2518,0.854,1500.1,1609.7,-109.6,2024/25
+2024-11-30 00:00:00,Dortmund,Bayern Munich,draw,home_win,False,SKIP,0.4335,0.232,0.3345,0.8896,1597.1,1704.9,-107.8,2024/25
+2024-12-01 00:00:00,Mainz,Hoffenheim,home_win,home_win,True,HOLD,0.5401,0.249,0.211,0.318,1531.1,1475.6,55.5,2024/25
+2024-12-06 00:00:00,Stuttgart,Union Berlin,home_win,away_win,False,SKIP,0.2895,0.3144,0.3961,0.7605,1607.0,1469.5,137.5,2024/25
+2024-12-07 00:00:00,Bochum,Werder Bremen,away_win,home_win,False,SKIP,0.3753,0.2614,0.3632,0.6147,1338.1,1502.8,-164.7,2024/25
+2024-12-07 00:00:00,Ein Frankfurt,Augsburg,draw,home_win,False,SNIPER,0.6385,0.2184,0.1431,1.039,1595.1,1456.4,138.7,2024/25
+2024-12-07 00:00:00,Holstein Kiel,RB Leipzig,away_win,away_win,True,SKIP,0.3095,0.29,0.4004,0.5394,1379.8,1596.6,-216.8,2024/25
+2024-12-07 00:00:00,Leverkusen,St Pauli,home_win,home_win,True,SNIPER,0.5401,0.2565,0.2033,0.3186,1724.8,1456.3,268.5,2024/25
+2024-12-07 00:00:00,M'gladbach,Dortmund,draw,away_win,False,SKIP,0.2621,0.2379,0.5,0.8994,1461.0,1599.7,-138.7,2024/25
+2024-12-08 00:00:00,Wolfsburg,Mainz,home_win,home_win,True,HOLD,0.5501,0.244,0.2059,0.3044,1480.4,1542.4,-62.0,2024/25
+2024-12-08 00:00:00,Hoffenheim,Freiburg,draw,home_win,False,SKIP,0.357,0.2993,0.3437,0.7365,1464.3,1497.0,-32.8,2024/25
+2024-12-13 00:00:00,Freiburg,Wolfsburg,home_win,home_win,True,SKIP,0.4532,0.2867,0.2601,0.4489,1497.8,1496.9,0.9,2024/25
+2024-12-14 00:00:00,Augsburg,Leverkusen,away_win,away_win,True,SKIP,0.3092,0.282,0.4088,0.5246,1464.3,1729.2,-264.9,2024/25
+2024-12-14 00:00:00,Mainz,Bayern Munich,home_win,away_win,False,SNIPER,0.2146,0.2257,0.5597,0.981,1525.8,1702.3,-176.4,2024/25
+2024-12-14 00:00:00,M'gladbach,Holstein Kiel,home_win,home_win,True,SKIP,0.4741,0.2703,0.2556,0.4149,1465.0,1371.0,94.1,2024/25
+2024-12-14 00:00:00,Union Berlin,Bochum,away_win,home_win,False,SNIPER,0.7187,0.1953,0.086,1.39,1461.4,1327.2,134.2,2024/25
+2024-12-14 00:00:00,St Pauli,Werder Bremen,away_win,home_win,False,HOLD,0.54,0.2472,0.2128,0.9724,1451.9,1513.7,-61.9,2024/25
+2024-12-15 00:00:00,Dortmund,Hoffenheim,draw,home_win,False,SNIPER,0.7718,0.147,0.0812,1.3299,1595.7,1463.5,132.2,2024/25
+2024-12-15 00:00:00,RB Leipzig,Ein Frankfurt,home_win,home_win,True,HOLD,0.5962,0.2326,0.1713,0.2465,1605.5,1587.2,18.2,2024/25
+2024-12-20 00:00:00,Bayern Munich,RB Leipzig,home_win,home_win,True,SNIPER,0.6372,0.2088,0.154,0.199,1680.7,1618.4,62.3,2024/25
+2024-12-21 00:00:00,Stuttgart,St Pauli,away_win,home_win,False,SKIP,0.4068,0.2911,0.3021,0.7373,1615.1,1436.4,178.7,2024/25
+2024-12-21 00:00:00,Ein Frankfurt,Mainz,away_win,home_win,False,HOLD,0.5299,0.244,0.2261,0.9392,1574.3,1547.4,26.9,2024/25
+2024-12-21 00:00:00,Holstein Kiel,Augsburg,home_win,home_win,True,HOLD,0.5665,0.2555,0.178,0.2849,1361.2,1457.1,-95.9,2024/25
+2024-12-21 00:00:00,Werder Bremen,Union Berlin,home_win,away_win,False,SKIP,0.3015,0.2929,0.4056,0.7381,1529.2,1437.6,91.6,2024/25
+2024-12-21 00:00:00,Leverkusen,Freiburg,home_win,home_win,True,SKIP,0.4607,0.2843,0.2551,0.4368,1736.4,1511.5,224.9,2024/25
+2024-12-21 00:00:00,Hoffenheim,M'gladbach,away_win,home_win,False,SKIP,0.4401,0.2706,0.2893,0.772,1471.2,1474.8,-3.6,2024/25
+2024-12-22 00:00:00,Wolfsburg,Dortmund,away_win,away_win,True,SKIP,0.3386,0.2528,0.4086,0.5283,1483.3,1588.0,-104.7,2024/25
+2025-01-10 00:00:00,Dortmund,Leverkusen,away_win,home_win,False,HOLD,0.6772,0.1877,0.1351,1.2418,1601.5,1741.9,-140.4,2024/25
+2025-01-11 00:00:00,Freiburg,Holstein Kiel,home_win,home_win,True,SNIPER,0.5223,0.2775,0.2003,0.3453,1506.1,1379.3,126.7,2024/25
+2025-01-11 00:00:00,Hoffenheim,Wolfsburg,away_win,away_win,True,SKIP,0.3575,0.28,0.3625,0.6127,1453.1,1469.8,-16.7,2024/25
+2025-01-11 00:00:00,Mainz,Bochum,home_win,home_win,True,SNIPER,0.6735,0.1987,0.1277,0.1624,1566.9,1351.0,215.9,2024/25
+2025-01-11 00:00:00,St Pauli,Ein Frankfurt,away_win,home_win,False,SKIP,0.4225,0.2755,0.3019,0.7417,1461.6,1554.8,-93.2,2024/25
+2025-01-11 00:00:00,M'gladbach,Bayern Munich,away_win,away_win,True,SNIPER,0.2007,0.2216,0.5777,0.2678,1492.9,1691.7,-198.8,2024/25
+2025-01-12 00:00:00,RB Leipzig,Werder Bremen,home_win,home_win,True,SNIPER,0.7103,0.1825,0.1072,0.1287,1607.4,1539.0,68.4,2024/25
+2025-01-12 00:00:00,Augsburg,Stuttgart,away_win,home_win,False,SKIP,0.4225,0.289,0.2885,0.7683,1439.0,1589.9,-150.8,2024/25
+2025-01-14 00:00:00,Leverkusen,Mainz,home_win,home_win,True,SNIPER,0.5374,0.2465,0.2161,0.3215,1753.8,1572.6,181.2,2024/25
+2025-01-14 00:00:00,Holstein Kiel,Dortmund,home_win,away_win,False,SKIP,0.2611,0.2509,0.488,0.847,1370.8,1589.6,-218.7,2024/25
+2025-01-14 00:00:00,Ein Frankfurt,Freiburg,home_win,home_win,True,SKIP,0.4532,0.2805,0.2662,0.4485,1568.9,1514.6,54.3,2024/25
+2025-01-14 00:00:00,Wolfsburg,M'gladbach,home_win,home_win,True,HOLD,0.567,0.2399,0.1931,0.2823,1487.3,1483.3,3.9,2024/25
+2025-01-15 00:00:00,Bochum,St Pauli,home_win,away_win,False,SKIP,0.3137,0.2816,0.4047,0.7142,1345.3,1447.6,-102.3,2024/25
+2025-01-15 00:00:00,Bayern Munich,Hoffenheim,home_win,home_win,True,SNIPER,0.8261,0.1187,0.0551,0.0474,1701.2,1435.5,265.7,2024/25
+2025-01-15 00:00:00,Union Berlin,Augsburg,away_win,home_win,False,HOLD,0.6505,0.2354,0.1141,1.2633,1427.8,1427.5,0.2,2024/25
+2025-01-15 00:00:00,Stuttgart,RB Leipzig,home_win,away_win,False,SKIP,0.2595,0.2809,0.4596,0.8384,1601.4,1618.1,-16.8,2024/25
+2025-01-17 00:00:00,Ein Frankfurt,Dortmund,home_win,away_win,False,SKIP,0.3152,0.2439,0.4409,0.7228,1580.2,1566.4,13.8,2024/25
+2025-01-18 00:00:00,Bayern Munich,Wolfsburg,home_win,home_win,True,SNIPER,0.7299,0.1671,0.103,0.1115,1705.7,1500.8,204.9,2024/25
+2025-01-18 00:00:00,Bochum,RB Leipzig,draw,away_win,False,SNIPER,0.1815,0.2426,0.576,0.9384,1363.7,1603.6,-240.0,2024/25
+2025-01-18 00:00:00,Holstein Kiel,Hoffenheim,away_win,home_win,False,HOLD,0.5092,0.2682,0.2226,0.9355,1394.1,1431.1,-37.0,2024/25
+2025-01-18 00:00:00,Stuttgart,Freiburg,home_win,away_win,False,SKIP,0.3368,0.3042,0.359,0.6612,1615.8,1503.2,112.6,2024/25
+2025-01-18 00:00:00,Leverkusen,M'gladbach,home_win,home_win,True,SNIPER,0.5545,0.2427,0.2028,0.2985,1760.5,1469.8,290.7,2024/25
+2025-01-19 00:00:00,Union Berlin,Mainz,home_win,home_win,True,HOLD,0.5562,0.2656,0.1782,0.2992,1409.5,1565.9,-156.4,2024/25
+2025-01-19 00:00:00,Werder Bremen,Augsburg,away_win,home_win,False,SNIPER,0.5353,0.2482,0.2165,0.9621,1528.2,1445.8,82.4,2024/25
+2025-01-24 00:00:00,Wolfsburg,Holstein Kiel,draw,home_win,False,SNIPER,0.5523,0.2538,0.1939,0.8993,1494.8,1377.5,117.4,2024/25
+2025-01-25 00:00:00,Dortmund,Werder Bremen,draw,home_win,False,HOLD,0.8037,0.1249,0.0714,1.4169,1553.3,1506.4,46.8,2024/25
+2025-01-25 00:00:00,Freiburg,Bayern Munich,away_win,away_win,True,SKIP,0.2568,0.2634,0.4798,0.4059,1494.2,1711.7,-217.5,2024/25
+2025-01-25 00:00:00,Mainz,Stuttgart,home_win,home_win,True,HOLD,0.5555,0.2482,0.1963,0.2977,1545.1,1624.8,-79.7,2024/25
+2025-01-25 00:00:00,RB Leipzig,Leverkusen,draw,home_win,False,HOLD,0.5772,0.243,0.1799,0.9386,1595.7,1764.4,-168.8,2024/25
+2025-01-25 00:00:00,M'gladbach,Bochum,home_win,home_win,True,SNIPER,0.6549,0.2071,0.138,0.181,1465.9,1371.6,94.2,2024/25
+2025-01-26 00:00:00,Hoffenheim,Ein Frankfurt,draw,home_win,False,SKIP,0.3863,0.2726,0.3411,0.7947,1447.7,1593.3,-145.6,2024/25
+2025-01-26 00:00:00,St Pauli,Union Berlin,home_win,away_win,False,SKIP,0.338,0.3187,0.3433,0.6576,1429.2,1430.2,-1.0,2024/25
+2025-01-31 00:00:00,Werder Bremen,Mainz,home_win,home_win,True,SKIP,0.4191,0.2567,0.3242,0.5084,1510.8,1562.5,-51.7,2024/25
+2025-02-01 00:00:00,Bayern Munich,Holstein Kiel,home_win,home_win,True,SNIPER,0.7881,0.1417,0.0703,0.0699,1720.5,1384.6,335.9,2024/25
+2025-02-01 00:00:00,Bochum,Freiburg,away_win,away_win,True,SKIP,0.252,0.2823,0.4658,0.4285,1361.9,1485.4,-123.4,2024/25
+2025-02-01 00:00:00,St Pauli,Augsburg,draw,home_win,False,HOLD,0.5665,0.2555,0.178,0.9069,1443.0,1467.7,-24.7,2024/25
+2025-02-01 00:00:00,Stuttgart,M'gladbach,away_win,home_win,False,SKIP,0.4165,0.2779,0.3056,0.733,1607.5,1475.6,131.9,2024/25
+2025-02-01 00:00:00,Union Berlin,RB Leipzig,draw,home_win,False,SKIP,0.4044,0.3117,0.2839,0.7178,1416.5,1600.9,-184.5,2024/25
+2025-02-02 00:00:00,Ein Frankfurt,Wolfsburg,draw,home_win,False,SKIP,0.4583,0.2627,0.2789,0.8315,1589.0,1487.7,101.3,2024/25
+2025-02-02 00:00:00,Leverkusen,Hoffenheim,home_win,home_win,True,SNIPER,0.5871,0.2374,0.1754,0.2576,1759.2,1452.0,307.2,2024/25
+2025-02-07 00:00:00,Bayern Munich,Werder Bremen,home_win,home_win,True,SNIPER,0.8549,0.0981,0.0471,0.0329,1723.6,1526.9,196.8,2024/25
+2025-02-08 00:00:00,Dortmund,Stuttgart,away_win,home_win,False,HOLD,0.7824,0.1433,0.0743,1.4897,1548.9,1583.8,-34.9,2024/25
+2025-02-08 00:00:00,Hoffenheim,Union Berlin,away_win,away_win,True,SKIP,0.3074,0.311,0.3816,0.5737,1448.3,1422.4,26.0,2024/25
+2025-02-08 00:00:00,Mainz,Augsburg,draw,home_win,False,SNIPER,0.599,0.2345,0.1665,0.9726,1546.4,1468.8,77.6,2024/25
+2025-02-08 00:00:00,Wolfsburg,Leverkusen,draw,home_win,False,SKIP,0.4941,0.2611,0.2448,0.8501,1494.2,1762.8,-268.6,2024/25
+2025-02-08 00:00:00,M'gladbach,Ein Frankfurt,draw,home_win,False,SKIP,0.4305,0.2628,0.3068,0.8229,1499.3,1582.4,-83.2,2024/25
+2025-02-09 00:00:00,Holstein Kiel,Bochum,draw,home_win,False,HOLD,0.6399,0.2208,0.1393,1.0361,1381.5,1349.3,32.2,2024/25
+2025-02-09 00:00:00,RB Leipzig,St Pauli,home_win,home_win,True,SNIPER,0.6307,0.2296,0.1397,0.2086,1595.0,1441.8,153.2,2024/25
+2025-02-14 00:00:00,Augsburg,RB Leipzig,draw,away_win,False,SNIPER,0.2254,0.2723,0.5023,0.8328,1474.5,1602.6,-128.2,2024/25
+2025-02-15 00:00:00,Bochum,Dortmund,home_win,away_win,False,SNIPER,0.1364,0.1875,0.6761,1.2381,1353.0,1532.2,-179.2,2024/25
+2025-02-15 00:00:00,St Pauli,Freiburg,away_win,home_win,False,SKIP,0.3899,0.3036,0.3065,0.7251,1434.2,1498.0,-63.8,2024/25
+2025-02-15 00:00:00,Stuttgart,Wolfsburg,away_win,away_win,True,SKIP,0.3366,0.2845,0.3789,0.58,1600.5,1503.1,97.4,2024/25
+2025-02-15 00:00:00,Union Berlin,M'gladbach,away_win,home_win,False,HOLD,0.5717,0.261,0.1674,1.0882,1441.8,1500.8,-59.0,2024/25
+2025-02-15 00:00:00,Leverkusen,Bayern Munich,draw,away_win,False,HOLD,0.2569,0.2422,0.5009,0.8912,1753.9,1729.9,24.0,2024/25
+2025-02-16 00:00:00,Werder Bremen,Hoffenheim,away_win,home_win,False,SKIP,0.4733,0.2571,0.2696,0.8235,1520.6,1428.9,91.7,2024/25
+2025-02-16 00:00:00,Ein Frankfurt,Holstein Kiel,home_win,home_win,True,SNIPER,0.5334,0.254,0.2126,0.3275,1580.9,1377.8,203.1,2024/25
+2025-02-21 00:00:00,Freiburg,Werder Bremen,home_win,home_win,True,HOLD,0.6003,0.2355,0.1642,0.2422,1513.4,1498.4,15.0,2024/25
+2025-02-22 00:00:00,M'gladbach,Augsburg,away_win,home_win,False,HOLD,0.58,0.2418,0.1782,1.0703,1516.4,1478.0,38.4,2024/25
+2025-02-22 00:00:00,Holstein Kiel,Leverkusen,away_win,home_win,False,SKIP,0.4064,0.2825,0.3111,0.7196,1371.7,1750.5,-378.8,2024/25
+2025-02-22 00:00:00,Wolfsburg,Bochum,draw,home_win,False,SNIPER,0.726,0.1774,0.0966,1.2131,1525.5,1374.7,150.9,2024/25
+2025-02-22 00:00:00,Dortmund,Union Berlin,home_win,home_win,True,SNIPER,0.5837,0.2431,0.1732,0.2625,1510.5,1426.2,84.3,2024/25
+2025-02-22 00:00:00,Mainz,St Pauli,home_win,home_win,True,SKIP,0.4931,0.2654,0.2416,0.3857,1540.8,1418.9,121.9,2024/25
+2025-02-23 00:00:00,Bayern Munich,Ein Frankfurt,home_win,home_win,True,SNIPER,0.762,0.149,0.089,0.0868,1733.2,1587.0,146.3,2024/25
+2025-02-23 00:00:00,Hoffenheim,Stuttgart,draw,home_win,False,SKIP,0.4901,0.2719,0.238,0.827,1451.1,1578.1,-127.0,2024/25
+2025-02-28 00:00:00,Stuttgart,Bayern Munich,away_win,away_win,True,SNIPER,0.1594,0.2136,0.627,0.2101,1574.6,1741.0,-166.4,2024/25
+2025-03-01 00:00:00,RB Leipzig,Mainz,away_win,home_win,False,HOLD,0.6318,0.2206,0.1476,1.1745,1599.1,1549.5,49.6,2024/25
+2025-03-01 00:00:00,Bochum,Hoffenheim,away_win,away_win,True,SKIP,0.3532,0.2776,0.3692,0.5997,1383.0,1454.6,-71.6,2024/25
+2025-03-01 00:00:00,Werder Bremen,Wolfsburg,away_win,away_win,True,SKIP,0.3513,0.2635,0.3852,0.5708,1485.4,1517.2,-31.8,2024/25
+2025-03-01 00:00:00,Ein Frankfurt,Leverkusen,away_win,home_win,False,SKIP,0.4733,0.2592,0.2675,0.8277,1579.1,1754.7,-175.6,2024/25
+2025-03-01 00:00:00,St Pauli,Dortmund,away_win,away_win,True,SKIP,0.2611,0.2509,0.488,0.3933,1410.2,1520.6,-110.4,2024/25
+2025-03-02 00:00:00,Union Berlin,Holstein Kiel,away_win,home_win,False,HOLD,0.5559,0.2758,0.1683,1.0767,1416.1,1367.5,48.6,2024/25
+2025-03-02 00:00:00,Augsburg,Freiburg,draw,away_win,False,SKIP,0.2991,0.3026,0.3983,0.7345,1498.0,1526.4,-28.5,2024/25
+2025-03-07 00:00:00,M'gladbach,Mainz,away_win,home_win,False,SKIP,0.4687,0.2591,0.2722,0.8164,1496.4,1569.9,-73.5,2024/25
+2025-03-08 00:00:00,Bayern Munich,Bochum,away_win,home_win,False,SNIPER,0.908,0.0677,0.0243,1.781,1751.9,1368.0,383.9,2024/25
+2025-03-08 00:00:00,Dortmund,Augsburg,away_win,home_win,False,HOLD,0.8159,0.1254,0.0587,1.5674,1533.9,1497.0,36.9,2024/25
+2025-03-08 00:00:00,Holstein Kiel,Stuttgart,draw,home_win,False,HOLD,0.5242,0.2681,0.2078,0.8537,1388.0,1563.8,-175.8,2024/25
+2025-03-08 00:00:00,Leverkusen,Werder Bremen,away_win,home_win,False,SNIPER,0.6205,0.215,0.1645,1.1294,1765.2,1468.6,296.6,2024/25
+2025-03-08 00:00:00,Wolfsburg,St Pauli,draw,home_win,False,SNIPER,0.5523,0.2538,0.1939,0.8993,1534.0,1397.0,137.1,2024/25
+2025-03-08 00:00:00,Freiburg,RB Leipzig,draw,home_win,False,SKIP,0.367,0.3023,0.3307,0.7309,1527.4,1578.6,-51.2,2024/25
+2025-03-09 00:00:00,Ein Frankfurt,Union Berlin,away_win,home_win,False,SKIP,0.3953,0.3002,0.3045,0.7301,1568.7,1395.7,173.0,2024/25
+2025-03-14 00:00:00,St Pauli,Hoffenheim,home_win,home_win,True,HOLD,0.5092,0.2682,0.2226,0.3624,1404.8,1469.6,-64.7,2024/25
+2025-03-15 00:00:00,Augsburg,Wolfsburg,home_win,away_win,False,SKIP,0.297,0.2819,0.4211,0.7509,1516.9,1526.2,-9.3,2024/25
+2025-03-15 00:00:00,Mainz,Freiburg,draw,home_win,False,SKIP,0.415,0.2876,0.2974,0.7682,1584.9,1527.5,57.4,2024/25
+2025-03-15 00:00:00,Union Berlin,Bayern Munich,draw,away_win,False,SKIP,0.2968,0.2843,0.4189,0.7759,1420.8,1722.3,-301.6,2024/25
+2025-03-15 00:00:00,Werder Bremen,M'gladbach,away_win,home_win,False,SKIP,0.437,0.2561,0.3069,0.7369,1496.7,1481.5,15.3,2024/25
+2025-03-15 00:00:00,RB Leipzig,Dortmund,home_win,home_win,True,SKIP,0.4256,0.2571,0.3173,0.4966,1578.6,1514.0,64.6,2024/25
+2025-03-16 00:00:00,Bochum,Ein Frankfurt,away_win,away_win,True,SKIP,0.2699,0.2585,0.4716,0.4188,1397.6,1543.6,-146.1,2024/25
+2025-03-16 00:00:00,Stuttgart,Leverkusen,away_win,away_win,True,SKIP,0.3495,0.2836,0.3669,0.6035,1558.2,1737.0,-178.8,2024/25
+2025-03-28 00:00:00,Leverkusen,Bochum,home_win,home_win,True,SNIPER,0.7156,0.1819,0.1025,0.1245,1747.3,1385.9,361.4,2024/25
+2025-03-29 00:00:00,Bayern Munich,St Pauli,home_win,home_win,True,SNIPER,0.7881,0.1417,0.0703,0.0699,1712.4,1421.5,290.9,2024/25
+2025-03-29 00:00:00,Hoffenheim,Augsburg,draw,home_win,False,HOLD,0.5333,0.2615,0.2053,0.8719,1452.9,1531.0,-78.1,2024/25
+2025-03-29 00:00:00,Holstein Kiel,Werder Bremen,away_win,home_win,False,HOLD,0.54,0.2472,0.2128,0.9724,1393.5,1477.8,-84.2,2024/25
+2025-03-29 00:00:00,M'gladbach,RB Leipzig,home_win,away_win,False,SKIP,0.3133,0.2769,0.4098,0.7162,1500.4,1589.5,-89.0,2024/25
+2025-03-29 00:00:00,Ein Frankfurt,Stuttgart,home_win,home_win,True,HOLD,0.5957,0.2339,0.1704,0.2472,1555.3,1547.9,7.4,2024/25
+2025-03-30 00:00:00,Freiburg,Union Berlin,away_win,home_win,False,SKIP,0.3914,0.326,0.2826,0.7742,1532.3,1430.7,101.6,2024/25
+2025-03-30 00:00:00,Dortmund,Mainz,home_win,home_win,True,HOLD,0.731,0.163,0.106,0.1102,1503.1,1580.1,-77.0,2024/25
+2025-04-04 00:00:00,Augsburg,Bayern Munich,away_win,away_win,True,SNIPER,0.1324,0.1974,0.6702,0.1652,1529.7,1716.3,-186.6,2024/25
+2025-04-05 00:00:00,Bochum,Stuttgart,away_win,home_win,False,SKIP,0.3698,0.2824,0.3478,0.6419,1383.1,1534.5,-151.4,2024/25
+2025-04-05 00:00:00,Werder Bremen,Ein Frankfurt,home_win,home_win,True,SKIP,0.3807,0.2569,0.3624,0.5809,1492.2,1568.7,-76.5,2024/25
+2025-04-05 00:00:00,RB Leipzig,Hoffenheim,home_win,home_win,True,SNIPER,0.676,0.2066,0.1175,0.1614,1571.7,1454.2,117.5,2024/25
+2025-04-05 00:00:00,Mainz,Holstein Kiel,draw,home_win,False,SKIP,0.4931,0.2654,0.2416,0.8412,1562.8,1379.1,183.7,2024/25
+2025-04-05 00:00:00,Freiburg,Dortmund,away_win,away_win,True,SKIP,0.3219,0.2709,0.4072,0.5284,1509.7,1520.3,-10.6,2024/25
+2025-04-06 00:00:00,St Pauli,M'gladbach,draw,home_win,False,SKIP,0.4761,0.2699,0.254,0.8242,1417.6,1518.2,-100.7,2024/25
+2025-04-06 00:00:00,Union Berlin,Wolfsburg,home_win,home_win,True,SKIP,0.4902,0.2895,0.2202,0.3922,1453.2,1512.0,-58.8,2024/25
+2025-04-11 00:00:00,Wolfsburg,RB Leipzig,away_win,home_win,False,SKIP,0.3875,0.2824,0.3301,0.6787,1495.6,1580.5,-84.9,2024/25
+2025-04-12 00:00:00,Bochum,Augsburg,away_win,home_win,False,SKIP,0.4119,0.2807,0.3074,0.7282,1371.7,1519.7,-148.1,2024/25
+2025-04-12 00:00:00,Bayern Munich,Dortmund,draw,home_win,False,SNIPER,0.6013,0.2013,0.1973,1.0384,1726.4,1538.1,188.3,2024/25
+2025-04-12 00:00:00,M'gladbach,Freiburg,away_win,home_win,False,SKIP,0.3974,0.2905,0.3122,0.7154,1515.9,1491.9,24.0,2024/25
+2025-04-12 00:00:00,Leverkusen,Union Berlin,draw,home_win,False,SKIP,0.4029,0.3049,0.2922,0.7308,1750.1,1469.6,280.4,2024/25
+2025-04-12 00:00:00,Holstein Kiel,St Pauli,away_win,home_win,False,SKIP,0.4641,0.2835,0.2525,0.8545,1388.5,1419.9,-31.4,2024/25
+2025-04-12 00:00:00,Hoffenheim,Mainz,home_win,home_win,True,SKIP,0.4231,0.2715,0.3054,0.4999,1445.4,1553.4,-108.1,2024/25
+2025-04-13 00:00:00,Stuttgart,Werder Bremen,away_win,home_win,False,SKIP,0.4783,0.2604,0.2613,0.8422,1546.0,1509.4,36.6,2024/25
+2025-04-19 00:00:00,Werder Bremen,Bochum,home_win,home_win,True,SNIPER,0.612,0.2172,0.1708,0.2269,1529.3,1360.1,169.2,2024/25
+2025-04-19 00:00:00,Union Berlin,Stuttgart,draw,home_win,False,HOLD,0.6122,0.2525,0.1353,0.9519,1481.5,1526.1,-44.6,2024/25
+2025-04-19 00:00:00,Freiburg,Hoffenheim,home_win,home_win,True,HOLD,0.5674,0.2584,0.1742,0.2843,1511.3,1464.0,47.3,2024/25
+2025-04-19 00:00:00,Mainz,Wolfsburg,draw,home_win,False,SKIP,0.4182,0.2693,0.3125,0.8064,1534.8,1481.2,53.6,2024/25
+2025-04-19 00:00:00,RB Leipzig,Holstein Kiel,draw,home_win,False,SNIPER,0.6307,0.2296,0.1397,1.0108,1594.9,1371.6,223.3,2024/25
+2025-04-20 00:00:00,Dortmund,M'gladbach,home_win,home_win,True,HOLD,0.7459,0.1567,0.0974,0.0986,1547.6,1496.6,51.1,2024/25
+2025-04-20 00:00:00,St Pauli,Leverkusen,draw,home_win,False,SKIP,0.4064,0.2825,0.3111,0.7767,1436.7,1738.2,-301.5,2024/25
+2025-04-20 00:00:00,Augsburg,Ein Frankfurt,draw,away_win,False,SKIP,0.3224,0.2773,0.4003,0.7865,1531.3,1551.5,-20.1,2024/25
+2025-04-26 00:00:00,Bayern Munich,Mainz,home_win,home_win,True,SNIPER,0.792,0.1347,0.0733,0.0668,1716.8,1530.2,186.7,2024/25
+2025-04-26 00:00:00,Hoffenheim,Dortmund,away_win,away_win,True,SNIPER,0.2277,0.2356,0.5367,0.3219,1452.4,1559.1,-106.7,2024/25
+2025-04-26 00:00:00,Holstein Kiel,M'gladbach,home_win,home_win,True,SKIP,0.4761,0.2699,0.254,0.4119,1382.1,1485.1,-103.0,2024/25
+2025-04-26 00:00:00,Leverkusen,Augsburg,home_win,home_win,True,SNIPER,0.6434,0.2198,0.1368,0.1942,1728.3,1530.0,198.3,2024/25
+2025-04-26 00:00:00,Wolfsburg,Freiburg,away_win,home_win,False,SKIP,0.4726,0.2829,0.2445,0.8742,1485.9,1522.9,-37.0,2024/25
+2025-04-26 00:00:00,Ein Frankfurt,RB Leipzig,home_win,home_win,True,SKIP,0.3665,0.2762,0.3573,0.6054,1552.8,1584.4,-31.6,2024/25
+2025-04-27 00:00:00,Bochum,Union Berlin,draw,away_win,False,SNIPER,0.2129,0.2842,0.5029,0.8106,1353.0,1481.2,-128.2,2024/25
+2025-04-27 00:00:00,Werder Bremen,St Pauli,draw,home_win,False,SKIP,0.4271,0.269,0.304,0.8092,1536.4,1446.6,89.7,2024/25
+2025-05-03 00:00:00,M'gladbach,Hoffenheim,draw,home_win,False,HOLD,0.5207,0.255,0.2243,0.8765,1466.7,1439.0,27.7,2024/25
+2025-05-03 00:00:00,Dortmund,Wolfsburg,home_win,home_win,True,SNIPER,0.6622,0.1942,0.1436,0.1725,1572.5,1469.3,103.2,2024/25
+2025-05-03 00:00:00,RB Leipzig,Bayern Munich,draw,away_win,False,SKIP,0.3495,0.2619,0.3886,0.8179,1569.3,1723.4,-154.1,2024/25
+2025-05-03 00:00:00,Union Berlin,Werder Bremen,draw,home_win,False,HOLD,0.6338,0.2304,0.1358,1.0125,1477.7,1530.3,-52.6,2024/25
+2025-05-03 00:00:00,St Pauli,Stuttgart,away_win,home_win,False,HOLD,0.5242,0.2681,0.2078,0.9742,1452.8,1526.3,-73.6,2024/25
+2025-05-04 00:00:00,Mainz,Ein Frankfurt,draw,home_win,False,SKIP,0.4498,0.2593,0.2909,0.8355,1523.6,1568.0,-44.4,2024/25
+2025-05-04 00:00:00,Augsburg,Holstein Kiel,away_win,home_win,False,SKIP,0.3651,0.2946,0.3403,0.6553,1523.8,1400.5,123.2,2024/25
+2025-05-04 00:00:00,Freiburg,Leverkusen,draw,home_win,False,SKIP,0.4672,0.283,0.2498,0.7948,1539.5,1734.5,-195.0,2024/25
+2025-05-09 00:00:00,Wolfsburg,Hoffenheim,draw,home_win,False,HOLD,0.5992,0.2341,0.1668,0.9734,1459.9,1442.5,17.4,2024/25
+2025-05-10 00:00:00,Bochum,Mainz,away_win,away_win,True,SKIP,0.3032,0.2658,0.431,0.4864,1356.6,1523.4,-166.8,2024/25
+2025-05-10 00:00:00,Holstein Kiel,Freiburg,away_win,home_win,False,SKIP,0.3899,0.3036,0.3065,0.7251,1423.9,1545.8,-121.9,2024/25
+2025-05-10 00:00:00,Werder Bremen,RB Leipzig,draw,away_win,False,SKIP,0.2684,0.2601,0.4714,0.8417,1530.1,1573.9,-43.8,2024/25
+2025-05-10 00:00:00,Bayern Munich,M'gladbach,home_win,home_win,True,SNIPER,0.8047,0.1284,0.0669,0.0591,1718.7,1463.1,255.6,2024/25
+2025-05-11 00:00:00,Leverkusen,Dortmund,away_win,away_win,True,SKIP,0.3258,0.2506,0.4236,0.5011,1728.2,1581.9,146.3,2024/25
+2025-05-11 00:00:00,Ein Frankfurt,St Pauli,draw,home_win,False,SNIPER,0.5334,0.254,0.2126,0.8861,1568.3,1437.8,130.4,2024/25
+2025-05-11 00:00:00,Stuttgart,Augsburg,home_win,home_win,True,HOLD,0.5085,0.2721,0.2194,0.3637,1541.2,1500.4,40.8,2024/25
+2025-05-17 00:00:00,Dortmund,Holstein Kiel,home_win,home_win,True,SNIPER,0.7288,0.1704,0.1008,0.1128,1606.1,1411.2,194.9,2024/25
+2025-05-17 00:00:00,Augsburg,Union Berlin,away_win,away_win,True,SKIP,0.2557,0.3093,0.435,0.4803,1488.5,1477.8,10.7,2024/25
+2025-05-17 00:00:00,Freiburg,Ein Frankfurt,away_win,home_win,False,SKIP,0.4845,0.2744,0.2411,0.886,1558.5,1560.6,-2.1,2024/25
+2025-05-17 00:00:00,Hoffenheim,Bayern Munich,away_win,away_win,True,SNIPER,0.1723,0.2157,0.6119,0.2268,1445.5,1723.4,-277.9,2024/25
+2025-05-17 00:00:00,M'gladbach,Wolfsburg,away_win,home_win,False,SKIP,0.3996,0.2719,0.3284,0.6846,1458.4,1456.8,1.6,2024/25
+2025-05-17 00:00:00,Mainz,Leverkusen,draw,home_win,False,SKIP,0.4327,0.2667,0.3006,0.8154,1534.2,1704.0,-169.8,2024/25
+2025-05-17 00:00:00,RB Leipzig,Stuttgart,away_win,home_win,False,HOLD,0.688,0.2035,0.1085,1.3094,1574.2,1553.1,21.1,2024/25
+2025-05-17 00:00:00,St Pauli,Bochum,away_win,home_win,False,SNIPER,0.6399,0.2208,0.1393,1.199,1445.5,1345.7,99.7,2024/25
