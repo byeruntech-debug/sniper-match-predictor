@@ -246,11 +246,19 @@ function parseAdjusted(text) {
 }
 
 function formatReport(text) {
-  return text
-    .replace(/## (.*)/g,'<h3>$1</h3>')
-    .replace(/\*\*(.*?)\*\*/g,'<b>$1</b>')
-    .replace(/
-/g,'<br>');
+  if(!text) return '';
+  var result = '';
+  var lines = text.split('\n');
+  for(var i=0;i<lines.length;i++) {
+    var line = lines[i];
+    if(line.indexOf('## ')==0) {
+      result += '<h3>' + line.substring(3) + '</h3>';
+    } else {
+      line = line.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+      result += line + '<br>';
+    }
+  }
+  return result;
 }
 
 function delta(adj, base) {
